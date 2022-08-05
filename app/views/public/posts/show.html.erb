@@ -1,0 +1,11 @@
+<h2>動画詳細</h2>
+<video src="<%= rails_blob_path(@post.get_video) %>" type="video/mp4" controls></video>
+<%= image_tag @customer.image,size:"20×20" %></br>
+<%= @customer.last_name %><%= @customer.first_name %>
+<%= @post.report %>
+
+<%= @post.created_at %>
+
+<%= link_to "削除",  %>
+<%= link_to "編集",  %>
+<%= link_to "My Swingページへ",  %>

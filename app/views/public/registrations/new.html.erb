@@ -1,0 +1,75 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
+  <div class="field">
+  <%= f.label :名前 %>
+  <%= f.text_field :last_name %>
+  <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+  <%= f.label :フリガナ %>
+  <%= f.text_field :last_name_kana %>
+  <%= f.text_field :first_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード（６文字以上） %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード（確認用） %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <p>〜ここからプロフィール内容として使用〜</p>
+
+  <div class="field">
+    <%= f.label :プロフィール画像 %>
+  　<%= f.file_field :image, accept: "image/*" %>
+  </div>
+
+  <div class="field">
+  <%= f.label :ニックネーム %>
+  <%= f.text_field :nickname %>
+  </div>
+  <div class="field">
+  <%= f.label :身長 %>
+  <%= f.text_field :height %>cm
+  </div>
+  <div class="field">
+  <%= f.label :生年月日 %>
+  <%= f.text_field :birth_dat %>
+  </div>
+  <div class="field">
+  <%= f.label :持ち球 %>
+  <%= f.text_field :holding_ball %>
+  </div>
+  <div class="field">
+  <%= f.label :ゴルフ歴 %>
+  <%= f.text_field :history %>年
+  </div>
+  <div class="field">
+  <%= f.label :得意クラブ %>
+  <%= f.text_field :forte_club %>
+  </div>
+  <div class="field">
+  <%= f.label :ひとこと %>
+  <%= f.text_field :message %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+
+  <h4>既に登録済みの方</h4>
+    <%= link_to "こちら", new_customer_session_path %>　からログインしてください。
+<% end %>

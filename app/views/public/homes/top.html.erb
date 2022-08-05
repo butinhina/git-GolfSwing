@@ -1,0 +1,12 @@
+<p> <%= notice %> </p>
+<p> <%= alert %> </p>
+<%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+<P>ようこそ、Golf Swingへ！</br>
+このサイトは、ゴルフスウィング専用のコミュニティサイトになります。</br>
+ゲストログインでみんなのスウィングの閲覧はできますが</br>
+会員登録をして頂く事で、スウィング投稿や管理ができるようになります。
+</P>
+<%= link_to "ゲストログイン(閲覧用)", public_guest_sign_in_path, method: :post %></br>
+<%= link_to "ログイン", new_customer_session_path %></br>
+<p>または</p>
+<%= link_to "新規登録", new_customer_registration_path %>

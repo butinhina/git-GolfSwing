@@ -1,0 +1,8 @@
+<h2><%= @customer.nickname %>さんのMy Swing</h2>
+<% @posts.each do |post| %>
+  <%= link_to public_post_path(post.id) do %>
+    <% if post.video.attached? %>
+      <%= video_tag rails_blob_path(post.get_video) %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,7 @@
+<h3>本当に退会しますか？</h3>
+<p>退会すると、会員情報登録やこれまで投稿した</br>
+スウィングスウィングの閲覧、ブックマークした動画の閲覧ができなくなります。</br>
+退会する場合は、『退会する』をクリックして下さい。</p>
+
+<%= link_to "退会しない", public_customers_my_page_path %>
+<%= link_to "退会する", public_customers_withdraw_path, metod: :patch, data: {confirm: "本当に退会しますか？"} %>

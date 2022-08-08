@@ -1,6 +1,8 @@
 <h2>動画詳細</h2>
 <%= video_tag rails_blob_path(@post_video.get_video), :controls => true, :width => "320", :height => "240" %>
-<%= image_tag @post_video.customer.get_profile_image(30,30) %>
+<%= link_to public_customers_acount_path do %>
+  <%= image_tag @post_video.customer.get_profile_image(30,30) %>
+<% end %>
 <%= @post_video.customer.last_name %><%= @post_video.customer.first_name %>
 <%= @post_video.report %></br>
 <%= @post_video.created_at.strftime("%m月%d日") %></br>

@@ -3,6 +3,10 @@
 <%= link_to "編集する", public_customers_information_edit_path %>
   <table>
     <tr>
+      <th>プロフィール画像</th>
+      <td><%= image_tag @customer.get_profile_image(100,100) %></td>
+    </tr>
+    <tr>
       <th>名前</th>
       <td><%= @customer.last_name %><%= @customer.first_name %></td>
     </tr>

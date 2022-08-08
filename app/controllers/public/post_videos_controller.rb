@@ -1,5 +1,5 @@
 class Public::PostVideosController < ApplicationController
-
+before_action :authenticate_customer!, except: [:index]
   def new
     @post_video = PostVideo.new
   end
@@ -8,7 +8,7 @@ class Public::PostVideosController < ApplicationController
     @post_video = PostVideo.new(post_video_params)
     @post_video.customer_id = current_customer.id
     @post_video.save
-    redirect_to public_customers_acount_path
+    redirect_to public_customers_acount_path, notice: "投稿に成功できました"
   end
 
   def index
@@ -26,7 +26,7 @@ class Public::PostVideosController < ApplicationController
   def update
     @post_video = PostVideo.find(params[:id])
     @post_video.update(post_video_params)
-    redirect_to public_post_video_path
+    redirect_to public_post_video_path, notice: "投稿を更新しました"
   end
 
   def destroy

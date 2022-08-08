@@ -11,6 +11,42 @@
   </head>
 
   <body>
+    <header>
+      <% if customer_signed_in? %>
+       ようこそ、<%= current_customer.last_name %>さん
+        <li>
+          <%= link_to "About", public_about_path %>
+        </li>
+        <li>
+          <%= link_to "マイページ", public_customers_my_page_path %>
+        </li>
+        <li>
+          <%= link_to "My Swingページ", public_customers_acount_path %>
+        </li>
+        <li>
+          <%= link_to "みんなのスウィング", public_post_videos_path %>
+        </li>
+        <li>
+          <%= link_to "ログアウト",  destroy_customer_session_path %>
+        </li>
+        <li>
+          <%= link_to "投稿する",  new_public_post_video_path %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "About", public_about_path %>
+        </li>
+        <li>
+          <%= link_to "新規登録", new_customer_registration_path %>
+        </li>
+        <li>
+          <%= link_to "みんなのスウィング", public_post_videos_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_customer_session_path %>
+        </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

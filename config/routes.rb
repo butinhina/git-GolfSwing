@@ -16,8 +16,10 @@ Rails.application.routes.draw do
     patch '/customers/information' => 'customers#update'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
+    get '/customers/acount'
 
-    resources :posts, only:[:new,:create,:index,:show]
+    resources :post_videos
+    get '/post_videos/all' => 'post_videos#index_all'
   end
   devise_for :admin,skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"

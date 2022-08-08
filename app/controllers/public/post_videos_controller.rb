@@ -1,5 +1,5 @@
 class Public::PostVideosController < ApplicationController
-before_action :authenticate_customer!, except: [:index]
+before_action :authenticate_customer!, except: [:index, :show]
   def new
     @post_video = PostVideo.new
   end
@@ -12,11 +12,12 @@ before_action :authenticate_customer!, except: [:index]
   end
 
   def index
-    @post_videos = PostVideo.all
+    @post_videos = PostVideo.page(params[:page])
   end
 
   def show
     @post_video = PostVideo.find(params[:id])
+    @customer = @post_video.customer
   end
 
   def edit

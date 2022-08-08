@@ -1,0 +1,29 @@
+<%= image_tag customer.get_profile_image(50,50) %>
+      <%= customer.nickname %></br>
+  <h3>プロフィール</h3>
+  <table>
+    <tr>
+      <th>身長</th>
+      <td><%= customer.height %>cm</td>
+    </tr>
+    <tr>
+      <th>生年月日</th>
+      <td><%= customer.birth_dat %></td>
+    </tr>
+    <tr>
+      <th>持ち球</th>
+      <td><%= customer.holding_ball %></td>
+    </tr>
+    <tr>
+      <th>ゴルフ歴</th>
+      <td><%= customer.history %>年</td>
+    </tr>
+    <tr>
+      <th>得意クラブ</th>
+      <td><%= customer.forte_club %></td>
+    </tr>
+    <tr>
+      <th>ひとこと</th>
+      <td><%= customer.message %></td>
+    </tr>
+  </table>

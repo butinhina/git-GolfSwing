@@ -11,12 +11,12 @@ Rails.application.routes.draw do
 
   namespace :public do
     get '/about' => 'homes#about', as: 'about'
-    get '/customers/my_page' => 'customers#show'
+    get '/customers/:id' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
     patch '/customers/information' => 'customers#update'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
-    get '/customers/acount'
+    # get '/customers/acount'
 
     resources :post_videos
     get '/post_videos/all' => 'post_videos#index_all'

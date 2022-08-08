@@ -16,15 +16,12 @@
           <%= link_to "投稿する",  new_public_post_video_path %>
         </li>
       <% if customer_signed_in? %>
-       ようこそ、<%= current_customer.last_name %>さん
+       ようこそ、<%= current_customer.first_name %>さん！
         <li>
           <%= link_to "About", public_about_path %>
         </li>
         <li>
-          <%= link_to "マイページ", public_customers_my_page_path %>
-        </li>
-        <li>
-          <%= link_to "My Swingページ", public_customers_acount_path %>
+          <%= link_to "マイページ", public_path(current_customer.id) %>
         </li>
         <li>
           <%= link_to "みんなのスウィング", public_post_videos_path %>

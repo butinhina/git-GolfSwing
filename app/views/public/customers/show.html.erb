@@ -1,49 +1,10 @@
-<h2>マイページ</h2>
-<h3>登録情報</h3>
-<%= link_to "編集する", public_customers_information_edit_path %>
-  <table>
-    <tr>
-      <th>プロフィール画像</th>
-      <td><%= image_tag @customer.get_profile_image(100,100) %></td>
-    </tr>
-    <tr>
-      <th>名前</th>
-      <td><%= @customer.last_name %><%= @customer.first_name %></td>
-    </tr>
-    <tr>
-      <th>フリガナ</th>
-      <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= @customer.email %></td>
-    </tr>
-    <tr>
-      <th>ニックネーム</th>
-      <td><%= @customer.nickname %></td>
-    </tr>
-    <tr>
-      <th>身長</th>
-      <td><%= @customer.height %>cm</td>
-    </tr>
-    <tr>
-      <th>生年月日</th>
-      <td><%= @customer.birth_dat %></td>
-    </tr>
-    <tr>
-      <th>持ち球</th>
-      <td><%= @customer.holding_ball %></td>
-    </tr>
-    <tr>
-      <th>ゴルフ歴</th>
-      <td><%= @customer.history %>年</td>
-    </tr>
-    <tr>
-      <th>得意クラブ</th>
-      <td><%= @customer.forte_club %></td>
-    </tr>
-    <tr>
-      <th>ひとこと</th>
-      <td><%= @customer.message %></td>
-    </tr>
-  </table>
+<h2><%= @customer.nickname %>さんの記録</h2>
+<%= link_to "編集する", public_customers_information_edit_path %></br>
+  <%= render 'list', customer: @customer %>
+<% @post_videos.each do |post_video| %>
+  <%= video_tag rails_blob_path(post_video.get_video), :controls => true, :width => "320", :height => "240" %>
+  <%= link_to public_post_video_path(post_video.id) do %>
+  <%= post_video.created_at.strftime("%Y/%m/%d") %>
+  <% end %>
+<% end %>
+<%= paginate @post_videos %>

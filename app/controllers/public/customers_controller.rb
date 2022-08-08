@@ -1,7 +1,8 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
+    @post_videos = @customer.post_videos.page(params[:pa])
   end
 
   def edit
@@ -24,10 +25,10 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  def acount
-    @customer = current_customer
-    @post_videos = @customer.post_videos
-  end
+  # def acount
+    # @customer = current_customer
+    # @post_videos = @customer.post_videos
+  # end
 
   private
   def customer_params

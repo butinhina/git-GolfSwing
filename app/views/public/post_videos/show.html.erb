@@ -6,6 +6,9 @@
 <% end %>
 <%= @post_video.customer.last_name %><%= @post_video.customer.first_name %>
 <%= @post_video.report %></br>
+<% @post_video.tags.each do |tag| %>
+  <span>#<%= tag.name %></span>
+<% end %>
 <%= @post_video.created_at.strftime("%m月%d日") %></br>
 <% if @post_video.customer == current_customer %>
   <%= link_to "削除", public_post_video_path(@post_video), method: :delete %>

@@ -8,9 +8,11 @@
     <%= f.label :レポート文 %>
     <%= f.text_area :report, rows: 5 %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :タグ付け %>
-
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <%= tag.label {tag.check_box + tag.text} %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit "投稿" %>

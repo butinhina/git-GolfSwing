@@ -8,7 +8,7 @@ before_action :authenticate_customer!, except: [:index, :show]
     @post_video = PostVideo.new(post_video_params)
     @post_video.customer_id = current_customer.id
     @post_video.save
-    redirect_to public_customers_acount_path, notice: "投稿に成功できました"
+    redirect_to public_post_video_path(@post_video.id), notice: "投稿に成功できました"
   end
 
   def index
@@ -27,7 +27,7 @@ before_action :authenticate_customer!, except: [:index, :show]
   def update
     @post_video = PostVideo.find(params[:id])
     @post_video.update(post_video_params)
-    redirect_to public_post_video_path, notice: "投稿を更新しました"
+    redirect_to public_post_video_path(@post_video.id), notice: "投稿を更新しました"
   end
 
   def destroy
@@ -36,14 +36,15 @@ before_action :authenticate_customer!, except: [:index, :show]
     redirect_to public_post_videos_path
   end
 
-
-
-
+  def search
+    @post_videos = PostVideo.search(params[:keyword])
+    @keyword = params[:keyword]
+  end
 
   private
 
   def post_video_params
-    params.require(:post_video).permit(:customer_id, :report, :video)
+    params.require(:post_video).permit(:customer_id, :report, :video, tag_ids: [])
   end
 
 

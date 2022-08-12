@@ -1,5 +1,6 @@
 class Public::PostVideosController < ApplicationController
 before_action :authenticate_customer!, except: [:index, :show]
+before_action :guest?,only:[:new]
   def new
     @post_video = PostVideo.new
   end
@@ -47,5 +48,12 @@ before_action :authenticate_customer!, except: [:index, :show]
     params.require(:post_video).permit(:customer_id, :report, :video, tag_ids: [])
   end
 
+  protected
+
+  def guest?
+    if current_customer == Customer.guest
+      redirect_to root_path
+    end
+  end
 
 end

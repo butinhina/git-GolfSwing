@@ -1,4 +1,9 @@
-
+<%= form_with url: public_post_videos_path, method: :get do |f| %>
+  <% Tag.all.each do |t| %>
+    <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+  <% end %>
+  <%= submit_tag '検索' %>
+<% end %>
 <h2>みんなのスウィング</h2>
 <% @post_videos.each do |post_video| %>
   <%= video_tag rails_blob_path(post_video.get_video), :width => "320", :height => "240" %>

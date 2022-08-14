@@ -1,16 +1,12 @@
-<%= form_with url: public_path(current_customer.id), method: :get do |f| %>
+<%= form_with url: acount_public_post_videos_path, method: :get do |f| %>
   <% Tag.all.each do |t| %>
     <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
   <% end %>
   <%= submit_tag '検索' %>
 <% end %>
-
-<h2><%= @customer.nickname %>さんの記録</h2>
+<h2><%= current_customer.nickname %>さんの記録</h2>
 <%= link_to "編集する", public_customers_information_edit_path %></br>
-  <%= render 'list', customer: @customer %>
 <% @post_videos.each do |post_video| %>
   <%= video_tag rails_blob_path(post_video.get_video), :controls => true, :width => "320", :height => "240" %>
-  <%= link_to public_post_video_path(post_video.id) do %>
   <%= post_video.created_at.strftime("%Y/%m/%d") %>
-  <% end %>
 <% end %>

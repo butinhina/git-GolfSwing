@@ -14,6 +14,14 @@ before_action :guest?,only:[:new]
 
   def index
     @post_videos = PostVideo.page(params[:page])
+
+    if params[:tag_ids].present?
+      @post_videos = []
+      params[:tag_ids].each do |key, value|
+        @post_videos += Tag.find_by(name: key).post_videos if value == "1"
+      end
+      @post_videos.uniq!
+    end
   end
 
   def show

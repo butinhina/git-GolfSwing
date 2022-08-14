@@ -10,7 +10,9 @@
   </div>
   <div class="field">
     <%= f.label :タグ付け %>
-
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <%= tag.label {tag.check_box + tag.text} %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit "完了" %>

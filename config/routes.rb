@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     resources :post_videos do
       collection do
         get 'search'
+        get '/bookmarks' => 'bookmarks#index'
       end
+      resources :bookmarks, only: [:create, :destroy]
     end
     # get '/post_videos/all' => 'post_videos#index_all'
 

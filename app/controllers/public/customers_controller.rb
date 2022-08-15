@@ -3,7 +3,6 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @post_videos = @customer.post_videos.page(params[:page])
-
   end
 
   def edit

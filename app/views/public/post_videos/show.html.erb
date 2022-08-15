@@ -14,3 +14,8 @@
   <%= link_to "削除", public_post_video_path(@post_video), method: :delete %>
   <%= link_to "編集", edit_public_post_video_path %>
 <% end %>
+<% if @post_video.bookmarked_by?(current_customer) %>
+  <%= link_to "ブックマークを外す", public_post_video_bookmark_path(@post_video), method: :delete %>
+<% else %>
+  <%= link_to "ブックマーク", public_post_video_bookmarks_path(@post_video), method: :post %>
+<% end %>

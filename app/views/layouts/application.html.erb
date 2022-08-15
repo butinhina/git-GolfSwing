@@ -34,6 +34,9 @@
           <%= link_to "みんなのスウィング", public_post_videos_path %>
         </li>
         <li>
+          <%= link_to "ブックマーク一覧", bookmarks_public_post_videos_path %>
+        </li>
+        <li>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
         </li>
       <% else %>

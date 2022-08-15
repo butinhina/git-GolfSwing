@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
 
   # customerテーブルから中間テーブルに対する関連付け
   has_many :bookmarks, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   def get_profile_image(width,height)
   unless profile_image.attached?

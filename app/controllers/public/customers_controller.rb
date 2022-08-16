@@ -3,6 +3,19 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @post_videos = @customer.post_videos.page(params[:page])
+
+    if params[:tag_ids].present?
+      @post_videos = []
+      params[:tag_ids].each do |key, value|
+        @post_videos += Tag.find_by(name: key).post_videos if value == "1"
+        @post_videos.each do |post_video|
+          if post_video.customer_id != current_customer.id
+          @post_videos.delete(post_video)
+          end
+        end
+      end
+      @post_videos.uniq!
+    end
   end
 
   def edit

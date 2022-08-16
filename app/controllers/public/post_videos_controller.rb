@@ -15,6 +15,10 @@ before_action :guest?,only:[:new]
   def index
     @post_videos = PostVideo.page(params[:page])
 
+    if params[:tag]
+      Tag.create(name: params[:tag])
+    end
+
     if params[:tag_ids].present?
       @post_videos = []
       params[:tag_ids].each do |key, value|

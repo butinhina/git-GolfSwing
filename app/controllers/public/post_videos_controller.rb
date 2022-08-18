@@ -13,7 +13,7 @@ before_action :guest?,only:[:new]
   end
 
   def index
-    @post_videos = PostVideo.page(params[:page])
+    @post_videos = PostVideo.published.page(params[:page]).reverse_order
 
     if params[:tag]
       Tag.create(name: params[:tag])
@@ -28,9 +28,15 @@ before_action :guest?,only:[:new]
     end
   end
 
+  def confirm
+    @post_videos = current_customer.post_videos.draft.page(params[:page]).reverse_order
+  end
+
   def show
     @post_video = PostVideo.find(params[:id])
     @customer = @post_video.customer
+    @post_comment = PostComment.new
+
   end
 
   def edit
@@ -57,7 +63,7 @@ before_action :guest?,only:[:new]
   private
 
   def post_video_params
-    params.require(:post_video).permit(:customer_id, :report, :video, tag_ids: [])
+    params.require(:post_video).permit(:customer_id, :report, :video, :status, tag_ids: [])
   end
 
   protected

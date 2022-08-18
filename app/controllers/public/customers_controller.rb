@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @post_videos = @customer.post_videos.page(params[:page])
+    @post_videos = @customer.post_videos.published.page(params[:page]).reverse_order
 
     if params[:tag_ids].present?
       @post_videos = []

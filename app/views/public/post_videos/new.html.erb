@@ -14,6 +14,9 @@
         <%= tag.label {tag.check_box + tag.text} %>
     <% end %>
   </div>
+  <div class="form-group">
+    <%= f.select :status, PostVideo.statuses.keys.map { |k| [t("enums.post_video.status.#{k}"), k] }, {} %>
+  </div>
   <div class="actions">
     <%= f.submit "投稿" %>
   </div>

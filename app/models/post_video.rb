@@ -11,7 +11,8 @@ class PostVideo < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   #post_videosテーブルから中間テーブルに対する関連付け
   has_many :favorites, dependent: :destroy
-  
+  has_many :post_comments, dependent: :destroy
+
   def get_video
     if video.attached?
       video
@@ -29,6 +30,7 @@ class PostVideo < ApplicationRecord
   # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するか
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
-  end  
-  
+  end
+
+  enum status: { published: 0, draft: 1 }
 end

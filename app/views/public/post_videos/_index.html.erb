@@ -1,0 +1,6 @@
+<% post_videos.each do |post_video| %>
+  <%= video_tag rails_blob_path(post_video.get_video), :width => "320", :height => "240" %>
+  <%= link_to public_post_video_path(post_video.id) do %>
+  <%= post_video.created_at.strftime("%Y-%m-%d") %>
+  <% end %>
+<% end %>

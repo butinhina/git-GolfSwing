@@ -6,10 +6,12 @@ class Customer < ApplicationRecord
 
   has_one_attached :profile_image
   has_many :post_videos, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
   # customerテーブルから中間テーブルに対する関連付け
   has_many :bookmarks, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
 
   def get_profile_image(width,height)
   unless profile_image.attached?

@@ -18,12 +18,15 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw'
 
     resources :post_videos do
+
       collection do
         get 'search'
         get '/bookmarks' => 'bookmarks#index'
+        get 'confirm'
       end
       resource :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
     # get '/post_videos/all' => 'post_videos#index_all'
 

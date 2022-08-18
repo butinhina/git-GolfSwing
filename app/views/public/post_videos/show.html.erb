@@ -29,3 +29,17 @@
   <% end %>
 <% end %>
 
+<p>コメント件数:<%= @post_video.post_comments.count %></p>
+<% @post_video.post_comments.each do |post_comment| %>
+  <%= image_tag post_comment.customer.get_profile_image(50,50) %>
+  <%= post_comment.customer.first_name %>
+  <%= post_comment.created_at %><%= post_comment.comment %>
+  <% if post_comment.customer == current_customer %>
+    <%= link_to "削除", public_post_video_post_comment_path(@post_video, post_comment), method: :delete %>
+  <% end %>
+<% end %>
+
+<%= form_with model: [@post_video, @post_comment], url: public_post_video_post_comments_path(@post_video) do |f| %>
+  <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>

@@ -15,9 +15,9 @@ before_action :guest?,only:[:new]
   def index
     @post_videos = PostVideo.published.page(params[:page]).reverse_order
 
-    if params[:tag]
-      Tag.create(name: params[:tag])
-    end
+    # if params[:tag]
+    #   Tag.create(name: params[:tag])
+    # end
 
     if params[:tag_ids].present?
       @post_videos = []

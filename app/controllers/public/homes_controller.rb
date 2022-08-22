@@ -1,7 +1,10 @@
 class Public::HomesController < ApplicationController
   def top
   end
-  
+
   def about
-  end  
+    @infomations = Infomation.all
+  end
+  
+
 end

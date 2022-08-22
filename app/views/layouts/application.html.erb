@@ -52,6 +52,9 @@
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
         </li>
+        <li>
+          <%= link_to "インフォメーション", admin_infomations_path %>
+        </li>
       <% else %>
         <li>
           <%= link_to "About", public_about_path %>

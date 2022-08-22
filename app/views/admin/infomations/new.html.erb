@@ -1,0 +1,10 @@
+<h2>インフォメーション作成</h2>
+<%= form_with model: @infomation, url: admin_infomations_path, method: :post do |f| %>
+  <div class="field">
+    <%= f.label :インフォ %>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit "保存" %>
+  </div>
+<% end %>

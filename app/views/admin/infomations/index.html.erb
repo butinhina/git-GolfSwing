@@ -1,0 +1,8 @@
+<h2>インフォメーション</h2>
+<%= link_to "情報を載せる", new_admin_infomation_path %></br>
+<% @infomations.each do |infomation| %>
+  <%= infomation.created_at.strftime("%Y/%m/%d") %>
+  <%= infomation.content %>
+  <%= link_to "編集", edit_admin_infomation_path(infomation.id) %>
+  <%= link_to "削除", admin_infomation_path(infomation.id), method: :delete %>
+<% end %>

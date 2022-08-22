@@ -1,6 +1,4 @@
 <%= form_with url: public_post_videos_path, method: :get do |f| %>
-  <%= text_field_tag :tag %>
-  <%= submit_tag 'タグを追加' %>
   <% Tag.all.each do |t| %>
     <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
   <% end %>

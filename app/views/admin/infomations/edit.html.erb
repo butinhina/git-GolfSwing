@@ -1,0 +1,10 @@
+<h2>インフォメーション更新</h2>
+<%= form_with model: @infomation, url: admin_infomation_path, method: :patch do |f| %>
+  <div class="field">
+    <%= f.label :content, "本文" %>
+    <%= f.text_area :content, rows: 10 %>
+  </div>
+  <div class="actions">
+    <%= f.submit "更新" %>
+  </div>
+<% end %>

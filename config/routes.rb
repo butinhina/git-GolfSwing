@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-  # devise_for :posts
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -23,14 +21,13 @@ Rails.application.routes.draw do
 
       collection do
         get 'search'
-        get '/bookmarks' => 'bookmarks#index'
         get 'confirm'
+        get '/bookmarks' => 'bookmarks#index'
       end
       resource :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
-    # get '/post_videos/all' => 'post_videos#index_all'
 
   end
   devise_for :admin,skip: [:registrations, :passwords] ,controllers: {
@@ -43,6 +40,7 @@ Rails.application.routes.draw do
     patch '/customers/:id' => 'customers#update', as: 'customer_update'
 
     resources :post_comments, only: [:index, :destroy]
+    resources :infomations, only: [:new,:create,:index,:edit,:update,:destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -14,11 +14,13 @@
   <%= link_to "削除", public_post_video_path(@post_video), method: :delete %>
   <%= link_to "編集", edit_public_post_video_path %>
 <% end %>
+
 <% if @post_video.bookmarked_by?(current_customer) %>
   <%= link_to "ブックマークを外す", public_post_video_bookmarks_path(@post_video), method: :delete %>
 <% else %>
   <%= link_to "ブックマーク", public_post_video_bookmarks_path(@post_video), method: :post %>
 <% end %>
+
 <% if @post_video.favorited_by?(current_customer) %>
   <%= link_to public_post_video_favorites_path(@post_video), method: :delete do %>
     ❤️<%= @post_video.favorites.count %>いいね
@@ -32,7 +34,7 @@
 <p>コメント件数:<%= @post_video.post_comments.count %></p>
 <% @post_video.post_comments.each do |post_comment| %>
   <%= image_tag post_comment.customer.get_profile_image(50,50) %>
-  <%= post_comment.customer.first_name %>
+  <%= post_comment.customer.nickname %>
   <%= post_comment.created_at %><%= post_comment.comment %>
   <% if post_comment.customer == current_customer %>
     <%= link_to "削除", public_post_video_post_comment_path(@post_video, post_comment), method: :delete %>

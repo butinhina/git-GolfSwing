@@ -23,3 +23,8 @@ Tag.create([
   { name: '練習場'},
   { name: 'コース'}
   ])
+
+  Admin.create!(
+    email: 'a@a',
+    password: 'aaaaaa'
+  )

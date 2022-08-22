@@ -25,7 +25,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     @customer.update(customer_params)
-    redirect_to public_customers_my_page_path
+    redirect_to public_path(current_customer.id)
   end
 
   def unsubscribe
@@ -37,11 +37,6 @@ class Public::CustomersController < ApplicationController
     reset_session
     redirect_to root_path
   end
-
-  # def acount
-    # @customer = current_customer
-    # @post_videos = @customer.post_videos
-  # end
 
   private
   def customer_params

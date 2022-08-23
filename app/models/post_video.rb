@@ -12,7 +12,9 @@ class PostVideo < ApplicationRecord
   #post_videosテーブルから中間テーブルに対する関連付け
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-
+  # バリデーションの設定
+  validates :video, presence: true
+  
   def get_video
     if video.attached?
       video

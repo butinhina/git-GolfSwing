@@ -1,4 +1,5 @@
 <h2>動画編集</h2>
+<%= render 'error_messages', post_video: @post_video %>
 <%= form_with model:@post_video, url: public_post_video_path(@post_video.id), method: :patch do |f| %>
   <div class="field">
     <%= f.label :スウィング動画 %>

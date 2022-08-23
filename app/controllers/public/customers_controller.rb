@@ -24,8 +24,11 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
-    @customer.update(customer_params)
-    redirect_to public_path(current_customer.id)
+    if @customer.update(customer_params)
+      redirect_to public_path(current_customer.id), notice: "会員情報を更新しました。"
+    else
+      render :edit
+    end
   end
 
   def unsubscribe

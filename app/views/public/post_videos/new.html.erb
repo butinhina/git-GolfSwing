@@ -1,4 +1,5 @@
 <h2>動画投稿</h2>
+<%= render 'error_messages', post_video: @post_video %>
 <%= form_with model: @post_video, url: public_post_videos_path, method: :post do |f| %>
   <div class="field">
     <%= f.label :スウィング動画 %>

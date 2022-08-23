@@ -4,8 +4,8 @@
   <% end %>
   <%= submit_tag '検索' %>
 <% end %>
-
 <h2><%= @customer.nickname %>さんの記録</h2>
+<%= notice %>
 <%= link_to "編集する", public_customers_information_edit_path %></br>
   <%= render 'list', customer: @customer %>
 <% @post_videos.each do |post_video| %>

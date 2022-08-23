@@ -8,16 +8,19 @@ before_action :guest?,only:[:new]
   def create
     @post_video = PostVideo.new(post_video_params)
     @post_video.customer_id = current_customer.id
-    @post_video.save
-    redirect_to public_post_video_path(@post_video.id), notice: "投稿に成功できました"
+    if @post_video.save
+      redirect_to public_post_video_path(@post_video.id), notice: "投稿に成功しました。"
+    else
+      render :new
+    end
   end
 
   def index
     @post_videos = PostVideo.published.page(params[:page]).reverse_order
 
-    # if params[:tag]
-    #   Tag.create(name: params[:tag])
-    # end
+    if params[:tag]
+      Tag.create(name: params[:tag])
+    end
 
     if params[:tag_ids].present?
       @post_videos = []
@@ -45,8 +48,11 @@ before_action :guest?,only:[:new]
 
   def update
     @post_video = PostVideo.find(params[:id])
-    @post_video.update(post_video_params)
-    redirect_to public_post_video_path(@post_video.id), notice: "投稿を更新しました"
+    if @post_video.update(post_video_params)
+      redirect_to public_post_video_path(@post_video.id), notice: "投稿を更新しました"
+    else
+      render :edit
+    end
   end
 
   def destroy

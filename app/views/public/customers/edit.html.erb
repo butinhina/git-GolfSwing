@@ -1,5 +1,13 @@
 <h2>会員情報編集</h2>
-  <table>
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<table>
    <%= form_with model: @customer, url: public_customers_information_path(@customer.id), method: :patch do |f| %>
     <tr>
       <th>名前</th>

@@ -1,49 +1,79 @@
-<%= render 'public/customers/list', customer: @customer %>
-<h2>動画詳細</h2>
+
+<div class="text-center mt-4 text-secondary"><h4>Video details</h4></div>
 <%= notice %></br>
-<%= video_tag rails_blob_path(@post_video.get_video), :controls => true, :width => "320", :height => "240" %>
-<%= link_to public_path(@customer.id) do %>
-  <%= image_tag @post_video.customer.get_profile_image(30,30) %>
-<% end %>
-<%= @post_video.customer.last_name %><%= @post_video.customer.first_name %>
-<%= @post_video.report %></br>
-<% @post_video.tags.each do |tag| %>
-  <span>#<%= tag.name %></span>
-<% end %>
-<%= @post_video.created_at.strftime("%m月%d日") %></br>
-<% if @post_video.customer == current_customer %>
-  <%= link_to "削除", public_post_video_path(@post_video), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-  <%= link_to "編集", edit_public_post_video_path %>
-<% end %>
+<div class="container mt-4">
+    <%= video_tag rails_blob_path(@post_video.get_video), :controls => true, :width => "320", :height => "240", class:"card-img-top"; %>
+      <div class="text-right mt-2 mr-3">
+        <% if @post_video.bookmarked_by?(current_customer) %>
+          <%= link_to public_post_video_bookmarks_path(@post_video), method: :delete, class:"text-warning" do %>
+            <i class="fas fa-bookmark"></i>
+          <% end %>
+        <% else %>
+          <%= link_to public_post_video_bookmarks_path(@post_video), method: :post, class:"text-warning" do %>
+            <i class="far fa-bookmark"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="body">
+        <div class="row">
+          <div class="col-2">
+            <%= link_to public_path(@customer.id) do %>
+              <%= image_tag @post_video.customer.get_profile_image(40,40), class:"rounded-circle"; %>
+            <% end %></br>
+          </div>
+          <div class-"col-10">
+            <p><%= @post_video.report %></p>
+            <p>
+              <% @post_video.tags.each do |tag| %>
+                #<%= tag.name %>
+              <% end %>
+            </p>
+            <span><i class="fas fa-user"></i>By <%= link_to "#{@post_video.customer.nickname}", public_path(@customer.id), class:"text-dark" %> | </span>
+            <span>
+              <% if @post_video.favorited_by?(current_customer) %>
+                <%= link_to public_post_video_favorites_path(@post_video), method: :delete, class:"text-danger" do %>
+                  <i class="fas fa-heart"></i>️<%= @post_video.favorites.count %>いいね
+                <% end %>
+              <% else %>
+                <%= link_to public_post_video_favorites_path(@post_video), method: :post do %>
+                  <i class="far fa-heart"></i><%= @post_video.favorites.count %>いいね
+                <% end %>
+              <% end %>
+            </span>
+          </div>
+        </div>
+        <p class="text-secondary mt-3"><%= @post_video.created_at.strftime("%m月%d日") %></p>
+        <p class="text-right mb-0">
+          <% if @post_video.customer == current_customer %>
+            <%= link_to "削除", public_post_video_path(@post_video), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            <%= link_to "編集", edit_public_post_video_path %>
+          <% end %>
+        </p>
+      </div>
+  </div>
+  <div class="w-50 bg-light mx-auto">
+    <div class="body">
+      <p>コメント件数:<%= @post_video.post_comments.count %></p>
+      <% @post_video.post_comments.each do |post_comment| %>
+      <table>
+        <%= image_tag post_comment.customer.get_profile_image(30,30), class:"rounded-circle"; %>
+        <%= post_comment.customer.nickname %>
+        <%= post_comment.comment %>
+        <span class="text-secondary"><%= post_comment.created_at.strftime("%Y-%m-%d") %></span>
+        <% if post_comment.customer == current_customer %>
+          <%= link_to "削除", public_post_video_post_comment_path(@post_video, post_comment), method: :delete %>
+        <% end %>
+      </table>
+      <% end %>
+    </div>
 
-<% if @post_video.bookmarked_by?(current_customer) %>
-  <%= link_to "ブックマークを外す", public_post_video_bookmarks_path(@post_video), method: :delete %>
-<% else %>
-  <%= link_to "ブックマーク", public_post_video_bookmarks_path(@post_video), method: :post %>
-<% end %>
-
-<% if @post_video.favorited_by?(current_customer) %>
-  <%= link_to public_post_video_favorites_path(@post_video), method: :delete do %>
-    ❤️<%= @post_video.favorites.count %>いいね
-  <% end %>
-<% else %>
-  <%= link_to public_post_video_favorites_path(@post_video), method: :post do %>
-    ♡<%= @post_video.favorites.count %>いいね
-  <% end %>
-<% end %>
-
-<p>コメント件数:<%= @post_video.post_comments.count %></p>
-<% @post_video.post_comments.each do |post_comment| %>
-  <%= image_tag post_comment.customer.get_profile_image(50,50) %>
-  <%= post_comment.customer.nickname %>
-  <%= post_comment.comment %></br>
-  <%= post_comment.created_at.strftime("%Y-%m-%d") %>
-  <% if post_comment.customer == current_customer %>
-    <%= link_to "削除", public_post_video_post_comment_path(@post_video, post_comment), method: :delete %>
-  <% end %>
-<% end %>
-
-<%= form_with model: [@post_video, @post_comment], url: public_post_video_post_comments_path(@post_video) do |f| %>
-  <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
+    <%= form_with model: [@post_video, @post_comment], url: public_post_video_post_comments_path(@post_video) do |f| %>
+      <div class="text-center">
+        <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %></br>
+      </div>
+      <div class="text-center pb-2">
+        <%= f.submit "投稿" %>
+      </div>
+    <% end %>
+  </div>
+</div>

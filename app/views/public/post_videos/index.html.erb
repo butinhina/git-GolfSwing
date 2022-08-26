@@ -1,16 +1,18 @@
-<div class="mt-5 ml-5">
-  <%= form_with url: public_post_videos_path, method: :get do |f| %>
-    <%= text_field_tag :tag %>
-    <%= submit_tag 'タグを追加' %>
-  <% end %>
-</div>
-<div class="container mt-3">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-2 bg-light">
+   <div class="col-2">
+    <div class="form-group mb-3 text-center">
+      <%= form_with url: public_post_videos_path, method: :get do |f| %>
+       <%= text_field_tag "tag", "", size: 10, placeholder: "タグの追加" %>
+       <%= submit_tag '＋' %>
+      <% end %>
+    </div>
+    <div class="bg-light">
       <%= render 'list' %>
     </div>
-    <div class="col-10">
+   </div>
+   <div class="col-10 d-flex h-50">
       <%= render 'index', post_videos: @post_videos %>
-    </div>
+   </div>
   </div>
 </div>

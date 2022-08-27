@@ -1,4 +1,6 @@
+<h4 class="text-center mt-4 text-secondary">Swings</h4>
 <% post_videos.each do |post_video| %>
+ <div class="col-sm d-flex h-50 pr-0 pl-0">
   <div class="card border-0 text-center mx-auto">
     <%= video_tag rails_blob_path(post_video.get_video), :width => "180", :height => "100" %>
     <div class="card-body">
@@ -7,4 +9,5 @@
     <% end %>
     </div>
   </div>
+ </div>
 <% end %>

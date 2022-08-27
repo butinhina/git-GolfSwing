@@ -1,6 +1,12 @@
 <%= image_tag customer.get_profile_image(50,50) %>
       <%= customer.nickname %></br>
-  <h3>プロフィール</h3>
+<div class="profile" id="profile">
+  <div class="profile-item">
+      <button class="profile-button" type="button" data-toggle="collapse" data-target="#ProfileDropdown" aria-expanded="false" aria-controls="ProfileDropdown" aria-label="Toggle profile">
+        プロフィール<i class="fas fa-angle-down"></i>
+      </button>
+    <div class="collapse profile-collapse" id="ProfileDropdown">
+    <div class="profile-body">
   <table>
     <tr>
       <th>身長</th>
@@ -26,4 +32,12 @@
       <th>ひとこと</th>
       <td><%= customer.message %></td>
     </tr>
+    <% if @customer == current_customer %>
+      <%= link_to "編集する", public_customers_information_edit_path %>
+    <% end %>
   </table>
+    </div>
+    </div>
+  </div>
+</div>
+

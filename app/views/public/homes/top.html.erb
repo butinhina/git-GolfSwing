@@ -1,7 +1,7 @@
+<div class="container">
 <p> <%= notice %> </p>
 <p> <%= alert %> </p>
-<div class="container mt-5">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-5">
     <P>
       ようこそ、Golf Swingへ！</br>
       このサイトは、ゴルフスウィング専用のコミュニティサイトになります。</br>
@@ -9,7 +9,7 @@
       会員登録をして頂く事で、スウィング投稿や管理ができるようになります。
     </P>
   </div>
-  <div class="text-center">
+  <div class="text-center text-secondary">
     <%= link_to "ゲストログイン(閲覧用)", public_guest_sign_in_path, method: :post %></br>
     <%= link_to "ログイン", new_customer_session_path %></br>
     <p>または</p>

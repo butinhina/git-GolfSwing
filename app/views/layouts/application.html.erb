@@ -13,76 +13,76 @@
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+        <div class="container-fluid">
          <div class="row">
-          <a class="navbar-brand" href="/"><%= image_tag('GolfSwing-logo.jpeg') %></a>
+          <a class="navbar-brand" href="/"><%= image_tag('preview-6.jpg') %></a>
           <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
             <% if customer_signed_in? %>
-            <div class="col d-flex mr-5">
+            <div class="col d-flex mt-2 mr-5">
             <li class="nav-item mr-3">
-              <%= link_to "Post",  new_public_post_video_path %>
+              <%= link_to "Post",  new_public_post_video_path, class: "text-dark" %>
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "Drafts",  confirm_public_post_videos_path %>
+              <%= link_to "Drafts",  confirm_public_post_videos_path, class: "text-dark" %>
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "About", public_about_path %>
+              <%= link_to "About", public_about_path, class: "text-dark" %>
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "Mypage", public_path(current_customer.id) %>
+              <%= link_to "Mypage", public_path(current_customer.id), class: "text-dark"%>
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "Swings", public_post_videos_path %>
+              <%= link_to "Swings", public_post_videos_path, class: "text-dark" %>
             </li>
             <li class="nav-item mr-3">
-              <%= link_to "Bookmarks", bookmarks_public_post_videos_path %>
+              <%= link_to "Bookmarks", bookmarks_public_post_videos_path, class: "text-dark" %>
             <li class="nav-item mr-3">
-              <%= link_to "Logout", destroy_customer_session_path, method: :delete %>
+              <%= link_to "Logout", destroy_customer_session_path, method: :delete, class: "text-dark" %>
             </li>
             </div>
-            <div class="col d-flex ml-5">
-              ようこそ、<%= current_customer.first_name %>さん！
+            <div class="col d-flex mt-2 ml-5">
+              <p class="text-secondary">ようこそ、<%= current_customer.first_name %>さん！</p>
               <div class= "search-form mr-1">
               <%= form_with url: search_public_post_videos_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword, value: @keyword, placeholder: "Search" %>
-                <%= f.submit "search", class: "fas fa-search" %>
+                <%= f.text_field :keyword, value: @keyword, placeholder: "Search", class: "border border-secondary" %>
+                <%= f.submit "search", class: "fas fa-search text-secondary text-info" %>
               <% end %>
               </div>
             </div>
          </div>
             <% elsif admin_signed_in? %>
-            <li class="nav-item mr-1">
-              <%= link_to "会員一覧", admin_root_path %>
+            <li class="nav-item mr-3">
+              <%= link_to "会員一覧", admin_root_path, class: "text-dark" %>
             </li>
-            <li class="nav-item mr-1">
-              <%= link_to "コメント一覧", admin_post_comments_path %>
+            <li class="nav-item mr-3">
+              <%= link_to "コメント一覧", admin_post_comments_path, class: "text-dark" %>
             </li>
-            <li class="nav-item mr-1">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            <li class="nav-item mr-3">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-dark" %>
             </li>
-            <li class="nav-item mr-1">
-              <%= link_to "インフォメーション", admin_infomations_path %>
+            <li class="nav-item mr-3">
+              <%= link_to "インフォメーション", admin_infomations_path, class: "text-dark" %>
             </li>
             <% else %>
-            <li class="nav-item mr-1">
-              <%= link_to "About", public_about_path %>
+            <li class="nav-item mr-3">
+              <%= link_to "About", public_about_path, class: "text-dark" %>
             </li>
-            <li class="nav-item mr-1">
-              <%= link_to "新規登録", new_customer_registration_path %>
+            <li class="nav-item mr-3">
+              <%= link_to "Signup", new_customer_registration_path, class: "text-dark" %>
             </li>
-            <li class="nav-item mr-1">
-              <%= link_to "みんなのスウィング", public_post_videos_path %>
+            <li class="nav-item mr-3">
+              <%= link_to "Swings", public_post_videos_path, class: "text-dark" %>
             </li>
-            <li class="nav-item mr-1">
-              <%= link_to "ログイン", new_customer_session_path %>
+            <li class="nav-item mr-3">
+              <%= link_to "Login", new_customer_session_path, class: "text-dark" %>
             </li>
             <% end %>
             </ul>

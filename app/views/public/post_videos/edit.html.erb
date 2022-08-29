@@ -1,24 +1,36 @@
-<h2>動画編集</h2>
-<%= render 'error_messages', post_video: @post_video %>
-<%= form_with model:@post_video, url: public_post_video_path(@post_video.id), method: :patch do |f| %>
-  <div class="field">
-    <%= f.label :スウィング動画 %>
-    <%= f.file_field :video %>
+<div class="wrapper">
+<h4 class="text-center text-secondary mt-3">Post edit</h4>
+  <%= render 'error_messages', post_video: @post_video %>
+  <%= form_with model:@post_video, url: public_post_video_path(@post_video.id), method: :patch do |f| %>
+  <div class="row">
+    <div class="col-12 col-sm-10 mx-auto bg-light">
+      <div class="d-flex flex-column justify-content-center">
+    <table>
+      <tr>
+        <td><%= f.label :スウィング動画, class:"text-secondary mt-3 ml-4 mr-5" %></td>
+        <td><%= f.file_field :video, class:"mt-4 mb-3" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :レポート文, class:"text-secondary ml-4 mr-5" %></td>
+        <td><%= f.text_area :report, rows: 5, class:"mt-2" %></td>
+      </tr>
+    </table>
+    <div class="d-flex flex-wrap">
+      <%= f.label :タグ付け, class:"text-secondary mt-2 ml-4" %>
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <span class="mt-2 ml-4"><%= tag.label {tag.check_box + tag.text} %></span>
+      <% end %>
+    </div>
+  <div class="text-center">
+    <div class="form-group mt-2">
+      <%= f.select :status, PostVideo.statuses.keys.map { |k| [t("enums.post_video.status.#{k}"), k] }, {} %>
+    </div>
+    <div class="actions pb-3">
+      <%= f.submit "完了" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :レポート文 %>
-    <%= f.text_field :report %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :タグ付け %>
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-      <%= tag.label {tag.check_box + tag.text} %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= f.select :status, PostVideo.statuses.keys.map { |k| [t("enums.post_video.status.#{k}"), k] }, {} %>
-  </div>
-  <div class="actions">
-    <%= f.submit "完了" %>
-  </div>
-<% end %>
+  <% end %>
+</div>

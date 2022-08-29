@@ -1,6 +1,6 @@
 
-<%= notice %>
 <div class="container">
+  <%= notice %>
   <div class="row">
    <div class="profile mt-4" >
      <%= render 'list', customer: @customer %>
@@ -20,7 +20,9 @@
           <% Tag.all.each do |t| %>
             <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
           <% end %>
+        <div class="text-center mt-2">
           <%= submit_tag '検索' %>
+        </div>
         <% end %>
       </div>
     </div>

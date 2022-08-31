@@ -1,7 +1,6 @@
-
-<div class="text-center mt-4 text-secondary"><h4>Video details</h4></div>
+<div class="container">
+<h4 class="text-center mt-4 text-secondary">Video details</h4>
 <%= notice %></br>
-<div class="container mt-4">
     <%= video_tag rails_blob_path(@post_video.get_video), :controls => true, :width => "320", :height => "240", class:"card-img-top"; %>
       <div class="text-right mt-2 mr-3">
         <% if @post_video.bookmarked_by?(current_customer) %>

@@ -1,24 +1,28 @@
-<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
-<table>
-  <tr>
-  <th>会員ID</th>
-  <td><%= @customer.id %></td>
+<div class="container">
+<h4 class="text-center text-secondary mt-4"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <div class="d-flex flex-column justify-content-center">
+<table class="mt-3 bg-light">
+<tr>
+  <th class="pt-3">会員ID</th>
+  <td class="pt-3"><%= @customer.id %></td>
 </tr>
 <tr>
-  <th>氏名</th>
-  <td><%= @customer.last_name %><%= @customer.first_name %></td>
+  <th class="pt-3">氏名</th>
+  <td class="pt-3"><%= @customer.last_name %><%= @customer.first_name %></td>
 </tr>
 <tr>
-  <th>フリガナ</th>
-  <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+  <th class="pt-3">フリガナ</th>
+  <td class="pt-3"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
 </tr>
 <tr>
-  <th>メールアドレス</th>
-  <td><%= @customer.email %></td>
+  <th class="pt-3">メールアドレス</th>
+  <td class="pt-3"><%= @customer.email %></td>
 </tr>
 <tr>
-  <th>会員ステータス</th>
-  <td><% if @customer.is_active == true %>
+  <th class="pt-3">会員ステータス</th>
+  <td class="pt-3"><% if @customer.is_active == true %>
         有効
       <% else %>
         退会
@@ -26,9 +30,13 @@
   </td>
 </tr>
 <tr>
-  <th></th>
-  <td><%= link_to "編集する", admin_customer_edit_path %></td>
+  <th class="pt-3"></th>
+  <td class="pt-3 pb-3"><%= link_to "編集する", admin_customer_edit_path %></td>
 </tr>
 </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 

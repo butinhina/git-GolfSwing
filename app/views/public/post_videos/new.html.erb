@@ -1,5 +1,5 @@
-<div class="wrapper">
-    <h4 class="text-center text-secondary mt-3">Post</h4>
+<div class="container-fluid">
+    <h4 class="text-center text-secondary mt-4">Post</h4>
     <p class="text-center text-danger">※ゴルフスウィング以外は投稿しないでください</p>
    <%= render 'error_messages', post_video: @post_video %>
   <%= form_with model: @post_video, url: public_post_videos_path, method: :post do |f| %>

@@ -1,20 +1,21 @@
-<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
-
+<div class="container">
+<h4 class="text-center text-secondary mt-4"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
 <%= form_with model: @customer, url: admin_customer_update_path(@customer) do |f| %>
-<table>
+  <div class="row">
+    <div class="col-12 col-sm-10 col-md-6 mx-auto">
+      <div class="d-flex flex-column justify-content-center">
+<table class="table table-bordered mt-3">
   <tr>
     <th>会員ID</th>
     <td><%= @customer.id %></td>
   </tr>
   <tr>
     <th><%= f.label :氏名 %></th>
-    <td><%= f.text_field :last_name %></td>
-    <td><%= f.text_field :first_name %></td>
+    <td><%= f.text_field :last_name %> <%= f.text_field :first_name %></td>
   </tr>
   <tr>
     <th><%= f.label :フリガナ %></th>
-    <td><%= f.text_field :last_name_kana %></td>
-    <td><%= f.text_field :first_name_kana %></td>
+    <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></td>
   </tr>
   <tr>
     <th><%= f.label :メールアドレス %></th>
@@ -27,9 +28,12 @@
       <%= f.radio_button :is_active, "false" %><%= f.label :is_active, "退会" %>
     </td>
   </tr>
-  <tr>
-    <th></th>
-    <td><%= f.submit "変更を保存"  %></td>
-  </tr>
-<% end %>
 </table>
+  <div class="text-center mt-2">
+    <%= f.submit "変更を保存"  %>
+  </div>
+<% end %>
+      </div>
+    </div>
+  </div>
+</div>

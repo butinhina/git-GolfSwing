@@ -49,11 +49,11 @@
             </li>
             </div>
             <div class="col d-flex mt-2 ml-5">
-              <p class="text-secondary">ようこそ、<%= current_customer.first_name %>さん！</p>
+              <p class="text-secondary mt-1">ようこそ、<%= current_customer.first_name %>さん！</p>
               <div class= "search-form mr-1">
               <%= form_with url: search_public_post_videos_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword, value: @keyword, placeholder: "Search", class: "border border-secondary" %>
-                <%= f.submit "search", class: "fas fa-search text-secondary text-info" %>
+                <%= f.text_field :keyword, value: @keyword, placeholder: "Search" %>
+                <%= f.submit "検索", class:" btn btn-dark btn-sm mb-1" %>
               <% end %>
               </div>
             </div>

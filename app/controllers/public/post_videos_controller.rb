@@ -58,11 +58,11 @@ before_action :guest?,only:[:new]
   def destroy
     @post_video = PostVideo.find(params[:id])
     @post_video.destroy
-    redirect_to public_post_videos_path
+    redirect_to public_path(current_customer.id)
   end
 
   def search
-    @post_videos = PostVideo.search(params[:keyword])
+    @post_videos = PostVideo.published.search(params[:keyword])
     @keyword = params[:keyword]
   end
 

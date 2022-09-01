@@ -25,7 +25,7 @@ class Admin::InfomationsController < ApplicationController
 
   def destroy
     Infomation.find(params[:id]).destroy
-    redirect_to request.refere
+    redirect_to request.referer
   end
   private
 

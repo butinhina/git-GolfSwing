@@ -2,27 +2,34 @@
 <div class="container">
   <%= notice %>
   <div class="row">
-   <div class="profile mt-4" >
+   <div class="col-4 mt-4" >
      <%= render 'list', customer: @customer %>
+   </div>
+   <div class="col-4 align-self-center text-center">
+     <%= form_with url: my_search_public_post_videos_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword, placeholder: "My_swing Search", class:"form-control" %>
+     <% end %>
+   </div>
+   <div class="col-4 align-self-center text-right">
+     <%= link_to "投稿する", new_public_post_video_path, class:"text-secondary" %>
    </div>
   </div>
   <div class="row">
+    <div class="col-12 col-md-9 d-flex flex-wrap mt-3 ">
       <%= render 'public/post_videos/index', post_videos: @post_videos %>
-    <div class="col-sm">
-      <div class="form-group mb-3 text-center">
-      <%= form_with url: public_post_videos_path, method: :get do |f| %>
-       <%= text_field_tag "tag", "", size: 10, placeholder: "タグの追加" %>
-       <%= submit_tag '＋' %>
-      <% end %>
-      </div>
-      <div class="bg-light">
+    </div>
+    <div class="col-8 col-md-3 mx-auto">
+      <div class="mt-3 bg-light">
         <%= form_with url: public_path(current_customer.id), method: :get do |f| %>
+        <ul class="list-unstyled">
           <% Tag.all.each do |t| %>
             <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
           <% end %>
-        <div class="text-center mt-2">
-          <%= submit_tag '検索' %>
+
+        <div class="text-center mt-2 pb-2">
+          <%= submit_tag 'My swing検索' %>
         </div>
+        </ul>
         <% end %>
       </div>
     </div>

@@ -66,6 +66,11 @@ before_action :guest?,only:[:new]
     @keyword = params[:keyword]
   end
 
+  def my_search
+    @post_videos = PostVideo.published.search(params[:keyword])
+    @keyword = params[:keyword]
+  end
+
   private
 
   def post_video_params

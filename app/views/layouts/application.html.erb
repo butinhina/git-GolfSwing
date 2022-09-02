@@ -23,16 +23,17 @@
             <ul class="navbar-nav">
             <% if customer_signed_in? %>
             <div class="col d-flex mt-2 mr-5">
+
+            <li class="nav-item mr-3">
+              <%= link_to "About", public_about_path, class: "text-dark" %>
+            </li>
+
             <li class="nav-item mr-3">
               <%= link_to "Post",  new_public_post_video_path, class: "text-dark" %>
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "Drafts",  confirm_public_post_videos_path, class: "text-dark" %>
-            </li>
-
-            <li class="nav-item mr-3">
-              <%= link_to "About", public_about_path, class: "text-dark" %>
+              <%= link_to "Swings", public_post_videos_path, class: "text-dark" %>
             </li>
 
             <li class="nav-item mr-3">
@@ -40,8 +41,9 @@
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "Swings", public_post_videos_path, class: "text-dark" %>
+              <%= link_to "Drafts",  confirm_public_post_videos_path, class: "text-dark" %>
             </li>
+
             <li class="nav-item mr-3">
               <%= link_to "Bookmarks", bookmarks_public_post_videos_path, class: "text-dark" %>
             <li class="nav-item mr-3">

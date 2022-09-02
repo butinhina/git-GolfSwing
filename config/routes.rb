@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
       collection do
         get 'search'
+        get 'my_search'
         get 'confirm'
         get '/bookmarks' => 'bookmarks#index'
       end

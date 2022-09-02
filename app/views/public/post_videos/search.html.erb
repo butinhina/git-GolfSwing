@@ -16,12 +16,6 @@
   <% end %>
   </div>
    <div class="col-8 col-md-3 mx-auto">
-     <div class="mt-3 mb-3 text-center">
-       <%= form_with url: public_post_videos_path, method: :get do |f| %>
-         <%= text_field_tag "tag", "", size: 10, placeholder: "タグの追加" %>
-         <%= submit_tag '＋' %>
-       <% end %>
-     </div>
      <div class="bg-light">
        <%= render 'list' %>
      </div>

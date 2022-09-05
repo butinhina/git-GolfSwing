@@ -5,6 +5,4 @@ class Public::HomesController < ApplicationController
   def about
     @infomations = Infomation.all
   end
-  
-
 end

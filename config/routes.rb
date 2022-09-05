@@ -10,12 +10,10 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    resources :customers, only: [:show, :edit, :update]
     get '/about' => 'homes#about', as: 'about'
-    get '/customers/:id' => 'customers#show'
-    get '/customers/information/edit' => 'customers#edit'
-    patch '/customers/information' => 'customers#update'
-    get '/customers/unsubscribe' => 'customers#unsubscribe'
-    patch '/customers/withdraw' => 'customers#withdraw'
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'customer_unsubscribe'
+    patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
 
     resources :post_videos do
 

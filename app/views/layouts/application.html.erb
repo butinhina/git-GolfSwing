@@ -37,7 +37,7 @@
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "Mypage", public_path(current_customer.id), class: "text-dark"%>
+              <%= link_to "Mypage", public_customer_path(current_customer.id), class: "text-dark"%>
             </li>
 
             <li class="nav-item mr-3">
@@ -54,7 +54,7 @@
               <p class="text-secondary mt-1">ようこそ、<%= current_customer.first_name %>さん！</p>
               <div class= "search-form mr-1">
               <%= form_with url: search_public_post_videos_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword, value: @keyword, placeholder: "Search" %>
+                <%= f.text_field :keyword, value: @keyword, placeholder: "Swings search" %>
                 <%= f.submit "検索", class:" btn btn-dark btn-sm mb-1" %>
               <% end %>
               </div>

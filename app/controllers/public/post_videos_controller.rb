@@ -1,6 +1,6 @@
 class Public::PostVideosController < ApplicationController
 before_action :authenticate_customer!, except: [:index, :show]
-before_action :guest?,only:[:new]
+
   def new
     @post_video = PostVideo.new
   end
@@ -9,7 +9,7 @@ before_action :guest?,only:[:new]
     @post_video = PostVideo.new(post_video_params)
     @post_video.customer_id = current_customer.id
     if @post_video.save
-      redirect_to public_post_video_path(@post_video.id), notice: "投稿に成功しました。"
+      redirect_to public_post_video_path(@post_video.id)
     else
       render :new
     end

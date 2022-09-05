@@ -25,18 +25,19 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to public_path(current_customer.id), notice: "会員情報を更新しました。"
+      redirect_to public_customer_path(current_customer.id), notice: "会員情報を更新しました。"
     else
       render :edit
     end
   end
 
   def unsubscribe
+
   end
 
   def withdraw
     @customer = current_customer
-    @customer.update(is_active :false)
+    @customer.update(is_active: false)
     reset_session
     redirect_to root_path
   end

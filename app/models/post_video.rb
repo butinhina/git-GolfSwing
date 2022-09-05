@@ -14,7 +14,7 @@ class PostVideo < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   # バリデーションの設定
   validates :video, presence: true
-  
+
   def get_video
     if video.attached?
       video
@@ -29,9 +29,9 @@ class PostVideo < ApplicationRecord
   def bookmarked_by?(customer)
     bookmarks.where(customer_id: customer).exists?
   end
-  # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するか
+  # 既にいいねしているかを検証
   def favorited_by?(customer)
-    favorites.exists?(customer_id: customer.id)
+    favorites.exists?(customer_id: customer)
   end
 
   enum status: { published: 0, draft: 1 }

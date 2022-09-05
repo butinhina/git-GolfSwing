@@ -6,6 +6,7 @@
 <table class="table table-hover mt-3">
   <thead>
     <tr>
+      <th>ID</th>
       <th>コメント日時</th>
       <th>アイコン</th>
       <th>氏名</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @post_comments.each do |post_comment| %>
     <tr>
+      <td><%= post_comment.id %></td>
       <td><%= post_comment.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
       <td><%= image_tag post_comment.customer.get_profile_image(40,40) %></td>
       <td><%= post_comment.customer.last_name %><%= post_comment.customer.first_name %></td>

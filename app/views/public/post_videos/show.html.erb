@@ -16,7 +16,7 @@
       <div class="body">
         <div class="row">
           <div class="col-2">
-            <%= link_to public_path(@customer.id) do %>
+            <%= link_to public_customer_path(@customer.id) do %>
               <%= image_tag @post_video.customer.get_profile_image(40,40), class:"rounded-circle"; %>
             <% end %></br>
           </div>
@@ -27,7 +27,8 @@
                 #<%= tag.name %>
               <% end %>
             </p>
-            <span><i class="fas fa-user"></i>By <%= link_to "#{@post_video.customer.nickname}", public_path(@customer.id), class:"text-dark" %> | </span>
+            <span><i class="fas fa-user"></i>By <%= link_to "#{@post_video.customer.nickname}", public_customer_path(@customer.id), class:"text-dark" %> | </span>
+
             <span>
               <% if @post_video.favorited_by?(current_customer) %>
                 <%= link_to public_post_video_favorites_path(@post_video), method: :delete, class:"text-danger" do %>
@@ -39,6 +40,7 @@
                 <% end %>
               <% end %>
             </span>
+
           </div>
         </div>
         <p class="text-secondary mt-3"><%= @post_video.created_at.strftime("%m月%d日") %></p>

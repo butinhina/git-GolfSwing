@@ -11,18 +11,18 @@ class Public::BookmarksController < ApplicationController
     end
   end
 
-    def destroy
-      @post_video = PostVideo.find(params[:post_video_id])
-      bookmark = @post_video.bookmarks.find_by(customer_id: current_customer.id)
-      if bookmark.present?
-        bookmark.destroy
-        redirect_to request.referer
-      else
-        redirect_to request.referer
-      end
+  def destroy
+    @post_video = PostVideo.find(params[:post_video_id])
+    bookmark = @post_video.bookmarks.find_by(customer_id: current_customer.id)
+    if bookmark.present?
+      bookmark.destroy
+      redirect_to request.referer
+    else
+      redirect_to request.referer
     end
+  end
 
-    def index
-      @bookmarks = Bookmark.where(customer_id: current_customer.id)
-    end
+  def index
+    @bookmarks = Bookmark.where(customer_id: current_customer.id)
+  end
 end

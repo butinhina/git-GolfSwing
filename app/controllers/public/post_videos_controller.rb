@@ -58,7 +58,7 @@ before_action :authenticate_customer!, except: [:index, :show]
   def destroy
     @post_video = PostVideo.find(params[:id])
     @post_video.destroy
-    redirect_to public_path(current_customer.id)
+    redirect_to public_customer_path(current_customer.id)
   end
 
   def search

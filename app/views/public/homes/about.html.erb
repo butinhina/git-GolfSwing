@@ -15,9 +15,12 @@
 
 <h4 class="text-warning mt-5">Information</h4>
 <% @infomations.each do |infomation| %>
-  <%= infomation.content %>
+<div class="d-flex flex-column mt-3">
+  <div class="row justify-content-center">
+    <h6 class="text-info mr-3"><%= infomation.created_at.strftime('%Y-%m-%d') %></h6>
+    <h6><%= infomation.content %></h6>
+  </div>
+</div>
 <% end %>
 </div>
 </div>
-
-

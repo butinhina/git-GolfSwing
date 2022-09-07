@@ -28,7 +28,7 @@
   </div>
    <div class="col-8 col-md-3 mx-auto">
      <div class="mt-3 bg-light">
-        <%= form_with url: public_path(current_customer.id), method: :get do |f| %>
+        <%= form_with url: public_customer_path(current_customer.id), method: :get do |f| %>
         <ul class="list-unstyled">
           <% Tag.all.each do |t| %>
             <li><%= check_box :tag_ids, t.name %><%= t.name %></li>

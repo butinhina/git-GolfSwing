@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 }
   root to: 'public/homes#top'
   devise_scope :customer do
-    post 'public/guest_sign_in' => 'public/sessions#new_guest'
+    post 'public/guest_sign_in' => 'public/sessions#new_guest' # ゲストユーザのルーティング
   end
 
   namespace :public do
@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
 
     resources :post_videos do
-
       collection do
         get 'search'
         get 'my_search'

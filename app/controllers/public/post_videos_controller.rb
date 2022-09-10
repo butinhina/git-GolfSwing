@@ -16,23 +16,23 @@ before_action :authenticate_customer!, except: [:index, :show]
   end
 
   def index
-    @post_videos = PostVideo.published.page(params[:page]).reverse_order
-
+    @post_videos = PostVideo.published.page(params[:page]).reverse_order #投稿されたものだけを取得
+    #パラメータがあればindexアクション内でtagsテーブルに保存
     if params[:tag]
       Tag.create(name: params[:tag])
     end
-
-    if params[:tag_ids].present?
-      @post_videos = []
-      params[:tag_ids].each do |key, value|
-        @post_videos += Tag.find_by(name: key).post_videos if value == "1"
+    #タグのOR検索
+    if params[:tag_ids].present?  #tag_idsが存在していたら
+      @post_videos = []  #一旦空にする
+      params[:tag_ids].each do |key, value| #tag_idsの中から選択された=>"1", 選択なし=>"0"
+        @post_videos += Tag.find_by(name: key).post_videos if value == "1" #1の（選択された）タグ名を1つずつ@post_videosに収めていく
       end
-      @post_videos.uniq!
+      @post_videos.uniq! #重複しているものを削除して、削除後の配列として返す
     end
   end
 
   def confirm
-    @post_videos = current_customer.post_videos.draft.page(params[:page]).reverse_order
+    @post_videos = current_customer.post_videos.draft.page(params[:page]).reverse_order #ログイン中のユーザーが下書きしたものだけを取得
   end
 
   def show
@@ -49,7 +49,7 @@ before_action :authenticate_customer!, except: [:index, :show]
   def update
     @post_video = PostVideo.find(params[:id])
     if @post_video.update(post_video_params)
-      redirect_to public_post_video_path(@post_video.id), notice: "投稿を更新しました"
+      redirect_to public_post_video_path(@post_video.id), notice: "投稿を更新しました。"
     else
       render :edit
     end
@@ -75,14 +75,6 @@ before_action :authenticate_customer!, except: [:index, :show]
 
   def post_video_params
     params.require(:post_video).permit(:customer_id, :report, :video, :status, tag_ids: [])
-  end
-
-  protected
-
-  def guest?
-    if current_customer == Customer.guest
-      redirect_to root_path
-    end
   end
 
 end

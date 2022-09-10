@@ -1,5 +1,8 @@
 <div class="container">
-<p> <%= alert %> </p>
+  <% if current_customer == Customer.guest %>
+    <p><%= notice %></p>
+  <% end %>
+    <p><%= alert %></p>
   <div class="text-center text-white main-content">
     <h1 class="pt-5">ようこそ、Golf Swingへ！</h1></br>
     <p>

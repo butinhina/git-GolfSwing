@@ -5,10 +5,10 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
-  has_many :post_videos, dependent: :destroy
-  has_many :post_comments, dependent: :destroy
 
   # customerテーブルから中間テーブルに対する関連付け
+  has_many :post_videos, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   # バリデーションの設定

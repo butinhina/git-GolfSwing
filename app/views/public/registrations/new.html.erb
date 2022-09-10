@@ -7,27 +7,27 @@
     <div class="d-flex flex-column justify-content-center">
   <table class="table table-bordered mt-3">
     <tr>
-      <th class="table-light text-secondary"><%= f.label :名前, class:"mt-2" %> </th>
+      <th class="table-light text-secondary"><%= f.label :名前, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.text_field :last_name, :placeholder => "姓" %> <%= f.text_field :first_name, :placeholder => "名", class:"mt-2" %></td>
     </tr>
 
     <tr>
-      <th class="table-light text-secondary"><%= f.label :フリガナ, class:"mt-2" %> </th>
+      <th class="table-light text-secondary"><%= f.label :フリガナ, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.text_field :last_name_kana, :placeholder => "セイ" %> <%= f.text_field :first_name_kana, :placeholder => "メイ", class:"mt-2" %></td>
     </tr>
 
     <tr>
-      <th class="table-light text-secondary"><%= f.label :メールアドレス, class:"mt-2" %></th>
+      <th class="table-light text-secondary"><%= f.label :メールアドレス, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"mt-2" %></td>
     </tr>
 
     <tr>
-      <th class="table-light text-secondary"><%= f.label :パスワード（６文字以上）, class:"mt-2" %></th>
+      <th class="table-light text-secondary"><%= f.label :パスワード（６文字以上）, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.password_field :password, autocomplete: "new-password", class:"mt-2" %></td>
     </tr>
 
     <tr>
-      <th class="table-light text-secondary"><%= f.label :パスワード（確認用）, class:"mt-2" %></th>
+      <th class="table-light text-secondary"><%= f.label :パスワード（確認用）, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"mt-2" %></td>
     </tr>
     <tr>
@@ -39,7 +39,7 @@
     </tr>
 
     <tr>
-      <th class="table-light text-secondary"><%= f.label :ニックネーム, class:"mt-2" %></th>
+      <th class="table-light text-secondary"><%= f.label :ニックネーム, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.text_field :nickname, class:"mt-2" %></td>
     </tr>
 

@@ -31,16 +31,17 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def new_guest
-    customer = Customer.guest
+    customer = Customer.guest # guestの内容はcustomer.rbに記述
     sign_in customer
     redirect_to root_path, notice: "ゲストユーザーとしてログインしました。"
   end
 
   protected
-
+  # 退会しているかを判断するメソッド
   def customer_state
-    @customer = Customer.find_by(email:params[:customer][:email])
-    return if !@customer
+    @customer = Customer.find_by(email:params[:customer][:email]) # 入力されたemailからアカウントを1件取得
+    return if !@customer # アカウントを取得できなかった場合、このメソッドを終了する
+    # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別し、一致してアカウントが退会していた場合
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_active == false
     redirect_to new_customer_registration_path
     end

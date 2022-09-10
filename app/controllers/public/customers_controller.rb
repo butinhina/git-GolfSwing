@@ -1,13 +1,15 @@
 class Public::CustomersController < ApplicationController
-
+ before_action :check_guest, only: [:update, :withdraw]
   def show
     @customer = Customer.find(params[:id])
-    @post_videos = @customer.post_videos.published.page(params[:page]).reverse_order
+    @post_videos = @customer.post_videos.published.page(params[:page]).reverse_order # 投稿したものだけ表示
 
     if params[:tag_ids].present?
       @post_videos = []
       params[:tag_ids].each do |key, value|
         @post_videos += Tag.find_by(name: key).post_videos if value == "1"
+        # @post_videosの中から、current_customerのものだけ表示したい
+        # ここは回りくどい処理だが、上記の処理だと他の方法が見つからなかったため下記のような処理になっている
         @post_videos.each do |post_video|
           if post_video.customer_id != current_customer.id
           @post_videos.delete(post_video)
@@ -32,7 +34,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-
   end
 
   def withdraw
@@ -40,6 +41,12 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_active: false)
     reset_session
     redirect_to root_path
+  end
+
+  def check_guest
+    if current_customer == Customer.guest
+      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
+    end
   end
 
   private

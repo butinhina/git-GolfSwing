@@ -14,15 +14,15 @@
       <div class="d-flex flex-column justify-content-center">
   <table class="table table-bordered mt-3">
     <tr>
-      <th class="table-light text-secondary"><%= f.label :名前, class:"mt-2" %> </th>
+      <th class="table-light text-secondary"><%= f.label :名前, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.text_field :last_name, class:"mt-2" %> <%= f.text_field :first_name, class:"mt-2" %></td>
     </tr>
     <tr>
-       <th class="table-light text-secondary"><%= f.label :フリガナ, class:"mt-2" %> </th>
+       <th class="table-light text-secondary"><%= f.label :フリガナ, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana, class:"mt-2" %></td>
     </tr>
     <tr>
-      <th class="table-light text-secondary"><%= f.label :メールアドレス, class:"mt-2" %></th>
+      <th class="table-light text-secondary"><%= f.label :メールアドレス, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.email_field :email, class:"mt-2" %></td>
     </tr>
     <tr>
@@ -30,10 +30,10 @@
     </tr>
     <tr>
       <th class="table-light text-secondary" ><%= f.label :プロフィール画像, class:"mt-2" %></th>
-      <td><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class:"mt-2" %></td>
+      <td><%= f.file_field :profile_image, accept: "image/*", class:"mt-2" %></td>
     </tr>
     <tr>
-      <th class="table-light text-secondary"><%= f.label :ニックネーム, class:"mt-2" %></th>
+      <th class="table-light text-secondary"><%= f.label :ニックネーム, class:"mt-2" %><span class="text-danger">［必須］</span></th>
       <td><%= f.text_field :nickname, class:"mt-2" %></td>
     </tr>
     <tr>

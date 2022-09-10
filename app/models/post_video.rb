@@ -2,14 +2,12 @@ class PostVideo < ApplicationRecord
 
   has_one_attached :video
   belongs_to :customer
-
   #post_videosテーブルから中間テーブルに対する関連付け
   has_many :post_tags, dependent: :destroy
   #post_videosテーブルから中間テーブルを介してTagsテーブルへの関連付け
   has_many :tags, through: :post_tags, dependent: :destroy
   #post_videosテーブルから中間テーブルに対する関連付け
   has_many :bookmarks, dependent: :destroy
-  #post_videosテーブルから中間テーブルに対する関連付け
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   # バリデーションの設定
@@ -20,7 +18,7 @@ class PostVideo < ApplicationRecord
       video
     end
   end
-
+  #どちらか一方にでも検索キーワードが部分一致すれば、その記事を出力する。
   def self.search(keyword)
       where(["report like? OR created_at like?", "%#{keyword}%", "%#{keyword}%"])
   end
@@ -33,6 +31,6 @@ class PostVideo < ApplicationRecord
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer)
   end
-
+  #投稿と下書き
   enum status: { published: 0, draft: 1 }
 end

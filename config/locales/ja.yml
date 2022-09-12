@@ -4,3 +4,7 @@ ja:
       status:
         published: "投稿する"
         draft: "下書きする"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"

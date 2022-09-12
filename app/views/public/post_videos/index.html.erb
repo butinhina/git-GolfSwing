@@ -4,18 +4,17 @@
     <div class="col-12 col-md-9 d-flex flex-wrap mt-4">
       <%= render 'index', post_videos: @post_videos %>
     </div>
-
-   <div class="col-8 col-md-3 mx-auto">
-    <div class="mt-4 mb-3 text-center">
+    <div class="col-8 col-md-3 mx-auto">
+     <div class="mt-4 mb-3 text-center">
       <%= form_with url: public_post_videos_path, method: :get do |f| %>
          <%= text_field_tag "tag", "", size: 10, placeholder: "タグの追加" %>
          <%= submit_tag '＋' %>
       <% end %>
+     </div>
+     <div class="bg-light">
+       <%= render 'list' %>
+     </div>
     </div>
-    <div class="bg-light">
-      <%= render 'list' %>
-    </div>
-   </div>
   </div>
   <div class="pagination justify-content-center pagination-sm"><%= paginate @post_videos %></div>
 </div>

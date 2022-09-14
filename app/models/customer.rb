@@ -19,11 +19,12 @@ class Customer < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true
   validates :nickname, presence: true
+  validate :profile_image_type
 
   def get_profile_image(width,height)
   unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpeg')
-    profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpg')
   end
   profile_image.variant(resize_to_limit: [width, height]).processed
   end
@@ -32,5 +33,13 @@ class Customer < ApplicationRecord
     find_or_create_by(email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
     end
+  end
+
+  private
+
+  def profile_image_type
+      if !profile_image.blob.content_type.in?(%('image/jpg image/png'))
+        errors.add(:profile_image, 'はjpegまたはpng形式でアップロードしてください')
+      end
   end
 end

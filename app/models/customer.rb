@@ -44,7 +44,7 @@ class Customer < ApplicationRecord
 
   def profile_image_size
     if profile_image.blob.byte_size > 1.megabytes
-      errors.add(:profile_image, "は1つのファイル5MB以内にしてください")
+      errors.add(:profile_image, "は1つのファイル1MB以内にしてください")
     end
   end
 

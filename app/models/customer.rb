@@ -19,7 +19,7 @@ class Customer < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true
   validates :nickname, presence: true
-  validate :profile_image_size
+  validate :profile_image_size, :profile_image_type
 
   def get_profile_image(width,height)
   unless profile_image.attached?
@@ -32,15 +32,25 @@ class Customer < ApplicationRecord
   def self.guest
     find_or_create_by(email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
+      customer.last_name = "ゲスト"
+      customer.first_name = "ゲスト"
+      customer.last_name_kana = "ゲスト"
+      customer.first_name_kana = "ゲスト"
+      customer.nickname = "ゲスト"
     end
   end
 
   private
 
   def profile_image_size
-    if profile_image.blob.byte_size > 5.megabytes
+    if profile_image.blob.byte_size > 1.megabytes
       errors.add(:profile_image, "は1つのファイル5MB以内にしてください")
     end
   end
 
+  def profile_image_type
+    if profile_image.blob.content_type.in?(%('image/jpg image/png'))
+      errors.add(:profile_image, 'はjpegまたはpng形式でアップロードしてください')
+    end
+  end
 end

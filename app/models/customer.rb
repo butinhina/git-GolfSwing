@@ -38,8 +38,8 @@ class Customer < ApplicationRecord
   private
 
   def profile_image_type
-      if !profile_image.blob.content_type.in?(%('image/jpg image/png'))
-        errors.add(:profile_image, 'はjpegまたはpng形式でアップロードしてください')
+      if !profile_image.blob.content_type.in?(%('image/jpg'))
+        errors.add(:profile_image, 'はjpgでアップロードしてください')
       end
   end
 end

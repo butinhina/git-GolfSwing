@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
- before_action :check_guest, only: [:update, :withdraw]
+ before_action :check_guest, only: :withdraw
   def show
     @customer = Customer.find(params[:id])
     @post_videos = @customer.post_videos.published.page(params[:page]).reverse_order # 投稿したものだけ表示
@@ -45,7 +45,7 @@ class Public::CustomersController < ApplicationController
 
   def check_guest
     if current_customer == Customer.guest
-      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
+      redirect_to root_path, alert: 'ゲストユーザーの削除はできません。'
     end
   end
 

@@ -31,9 +31,9 @@ Admin.create!(
 
 customers = Customer.create!(
   [
-    {email: 'o@o', last_name: 'Olivia', first_name: 'hinaka', last_name_kana: 'オリビア', first_name_kana: 'ヒナカ', password: 'oooooo', nickname: 'hinapon', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/profile_image/ひなぽん.jpeg"), filename:"ひなぽん.jpeg")},
-    {email: 'j@j', last_name: 'James', first_name: 'hitoshi', last_name_kana: 'ジェイムズ', first_name_kana: 'ヒトシ', password: 'jjjjjj', nickname: 'zin', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/profile_image/じんくん.jpeg"), filename:"じんくん.jpeg")},
-    {email: 'l@l', last_name: 'Lucas', first_name: 'yosuke', last_name_kana: 'ルカズ', first_name_kana: 'ヨウスケ', password: 'llllll', nickname: 'suke', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/profile_image/すけ.jpeg"), filename:"すけ.jpeg")}
+    {email: 'o@o', last_name: 'Olivia', first_name: 'hinaka', last_name_kana: 'オリビア', first_name_kana: 'ヒナカ', password: 'oooooo', nickname: 'hinapon', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/profile_image/IMG_9908.JPG"), filename:"IMG_9908.JPG")},
+    {email: 'j@j', last_name: 'James', first_name: 'hitoshi', last_name_kana: 'ジェイムズ', first_name_kana: 'ヒトシ', password: 'jjjjjj', nickname: 'zin', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/profile_image/IMG_9378.JPG"), filename:"IMG_9378.JPG")},
+    {email: 'l@l', last_name: 'Lucas', first_name: 'yosuke', last_name_kana: 'ルカズ', first_name_kana: 'ヨウスケ', password: 'llllll', nickname: 'suke', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/profile_image/IMG_9910.JPG"), filename:"IMG_9910.JPG")}
   ]
 )
 

@@ -19,7 +19,7 @@ class Customer < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true
   validates :nickname, presence: true
-  # validate :profile_image_type
+  validate :profile_image_type
 
   def get_profile_image(width,height)
   unless profile_image.attached?
@@ -37,9 +37,9 @@ class Customer < ApplicationRecord
 
   private
 
-  # def profile_image_type
-  #     if !profile_image.blob.content_type.in?(%('image/jpg image/png'))
-  #       errors.add(:profile_image, 'はjpegまたはpng形式でアップロードしてください')
-  #     end
-  # end
+  def profile_image_type
+      if !profile_image.blob.content_type.in?(%('image/jpg image/png'))
+        errors.add(:profile_image, 'はjpegまたはpng形式でアップロードしてください')
+      end
+  end
 end

@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_customer!
+  
   def create
     post_video = PostVideo.find(params[:post_video_id])
     favorite = current_customer.favorites.new(post_video_id: post_video.id)

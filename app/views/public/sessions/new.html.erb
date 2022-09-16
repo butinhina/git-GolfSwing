@@ -1,17 +1,16 @@
 <div class="container">
-<h4 class="text-center text-secondary mt-4">Login</h4>
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-<div class="row">
-  <div class="col-12 col-sm-6 col-md-4 mx-auto">
-    <div class="d-flex flex-column justify-content-center">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class:"mt-3 form-control" %>
-      <%= f.password_field :password, autocomplete: "current-password", :placeholder => "パスワード", class:"mt-3 form-control" %>
-    <div class="actions text-center mt-3">
-      <%= f.submit "ログイン", class:"btn btn-secondary" %>
-    </div>
+  <h4 class="text-center text-secondary mt-4">Login</h4>
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 mx-auto">
+      <div class="d-flex flex-column justify-content-center">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class:"mt-3 form-control" %>
+        <%= f.password_field :password, autocomplete: "current-password", :placeholder => "パスワード", class:"mt-3 form-control" %>
+        <div class="actions text-center mt-3">
+          <%= f.submit "ログイン", class:"btn btn-secondary" %>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<% end %>
+  <% end %>
 </div>

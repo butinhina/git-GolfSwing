@@ -1,12 +1,12 @@
-<h4 class="text-center mt-3 text-secondary">Bookmarks</h4>
 <div class="container">
+  <h4 class="text-center mt-4 text-secondary">Bookmarks</h4>
   <div class="row">
-    <% @bookmarks.each do |bookmark| %>
-    <div class="col-sm d-flex mt-3">
-      <%= link_to public_post_video_path(bookmark.post_video) do %>
-        <%= video_tag rails_blob_path(bookmark.post_video.get_video), :width => "200", :height => "120" %>
+    <div class="col-sm d-flex flex-wrap mt-4">
+      <% @bookmarks.each do |bookmark| %>
+        <%= link_to public_post_video_path(bookmark.post_video) do %>
+          <%= video_tag rails_blob_path(bookmark.post_video.get_video), :width => "200", :height => "120" %>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </div>
 </div>

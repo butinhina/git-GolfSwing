@@ -1,5 +1,7 @@
 class Public::CustomersController < ApplicationController
  before_action :check_guest, only: :withdraw
+ before_action :set_current_customer, except: [:show, :check_guest]
+
   def show
     @customer = Customer.find(params[:id])
     @post_videos = @customer.post_videos.published.page(params[:page]).reverse_order # 投稿したものだけ表示
@@ -21,11 +23,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = current_customer
   end
 
   def update
-    @customer = current_customer
     if @customer.update(customer_params)
       redirect_to public_customer_path(current_customer.id), notice: "会員情報を更新しました。"
     else
@@ -37,7 +37,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = current_customer
     @customer.update(is_active: false)
     reset_session
     redirect_to root_path
@@ -50,6 +49,11 @@ class Public::CustomersController < ApplicationController
   end
 
   private
+
+  def set_current_customer
+    @customer = current_customer
+  end
+
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :nickname, :height, :birth_dat, :holding_ball, :history, :forte_club, :message, :profile_image)
   end

@@ -14,8 +14,6 @@ class PostVideo < ApplicationRecord
   validates :video, presence: true
   validate :video_type, :video_size
 
-
-
   def get_video
     if video.attached?
       video
@@ -23,7 +21,7 @@ class PostVideo < ApplicationRecord
   end
   #どちらか一方にでも検索キーワードが部分一致すれば、その記事を出力する。
   def self.search(keyword)
-      where(["report like? OR created_at like?", "%#{keyword}%", "%#{keyword}%"])
+    where(["report like? OR created_at like?", "%#{keyword}%", "%#{keyword}%"])
   end
 
   # 既にブックマークしているかを検証

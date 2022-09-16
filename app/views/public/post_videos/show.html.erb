@@ -1,6 +1,6 @@
 <div class="container">
-<h4 class="text-center mt-4 text-secondary">Video details</h4>
-<%= notice %></br>
+ <h4 class="text-center mt-4 text-secondary">Video details</h4>
+ <%= notice %></br>
  <div class="d-flex flex-column justify-content-center">
   <div class="w-50 mx-auto">
     <%= video_tag rails_blob_path(@post_video.get_video), :controls => true, :width => "320", :height => "240", class:"card-img-top"; %>
@@ -29,9 +29,8 @@
                 #<%= tag.name %>
               <% end %>
             </p>
-            <span><i class="fas fa-user"></i>By <%= link_to "#{@post_video.customer.nickname}", public_customer_path(@customer.id), class:"text-dark" %> | </span>
+            <i class="fas fa-user"></i>By <%= link_to "#{@post_video.customer.nickname}", public_customer_path(@customer.id), class:"text-dark" %> |
 
-            <span>
               <% if @post_video.favorited_by?(current_customer) %>
                 <%= link_to public_post_video_favorites_path(@post_video), method: :delete, class:"text-danger" do %>
                   <i class="fas fa-heart"></i>️<%= @post_video.favorites.count %>いいね
@@ -41,8 +40,6 @@
                   <i class="far fa-heart"></i><%= @post_video.favorites.count %>いいね
                 <% end %>
               <% end %>
-            </span>
-
           </div>
         </div>
         <p class="text-secondary mt-3"><%= @post_video.created_at.strftime("%m月%d日") %></p>

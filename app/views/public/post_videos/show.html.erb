@@ -57,7 +57,9 @@
       <p>コメント件数:<%= @post_video.post_comments.count %></p>
       <% @post_video.post_comments.each do |post_comment| %>
       <table>
-        <%= image_tag post_comment.customer.get_profile_image(30,30), class:"rounded-circle"; %>
+        <%= link_to public_customer_path(post_comment.customer.id) do %>
+         <%= image_tag post_comment.customer.get_profile_image(30,30), class:"rounded-circle"; %>
+        <% end %>
         <%= post_comment.customer.nickname %>
         <%= post_comment.comment %>
         <span class="text-secondary"><%= post_comment.created_at.strftime("%Y-%m-%d") %></span>
@@ -70,7 +72,7 @@
 
     <%= form_with model: [@post_video, @post_comment], url: public_post_video_post_comments_path(@post_video) do |f| %>
       <div class="text-center">
-        <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %></br>
+        <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %>
       </div>
       <div class="text-center pb-2">
         <%= f.submit "投稿" %>

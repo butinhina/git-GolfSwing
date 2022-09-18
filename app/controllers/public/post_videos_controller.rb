@@ -1,5 +1,6 @@
 class Public::PostVideosController < ApplicationController
 before_action :authenticate_customer!, except: [:index, :show]
+before_action :set_post_video, only: [:show, :edit, :update, :destroy]
 
   def new
     @post_video = PostVideo.new
@@ -36,18 +37,14 @@ before_action :authenticate_customer!, except: [:index, :show]
   end
 
   def show
-    @post_video = PostVideo.find(params[:id])
     @customer = @post_video.customer
     @post_comment = PostComment.new
-
   end
 
   def edit
-    @post_video = PostVideo.find(params[:id])
   end
 
   def update
-    @post_video = PostVideo.find(params[:id])
     if @post_video.update(post_video_params)
       redirect_to public_post_video_path(@post_video.id), notice: "投稿を更新しました。"
     else
@@ -56,7 +53,6 @@ before_action :authenticate_customer!, except: [:index, :show]
   end
 
   def destroy
-    @post_video = PostVideo.find(params[:id])
     @post_video.destroy
     redirect_to public_customer_path(current_customer.id)
   end
@@ -72,6 +68,10 @@ before_action :authenticate_customer!, except: [:index, :show]
   end
 
   private
+
+  def set_post_video
+    @post_video = PostVideo.find(params[:id])
+  end
 
   def post_video_params
     params.require(:post_video).permit(:customer_id, :report, :video, :status, tag_ids: [])

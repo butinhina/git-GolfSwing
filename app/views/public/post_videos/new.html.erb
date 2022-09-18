@@ -16,21 +16,21 @@
             <td><%= f.text_area :report, rows: 5, class:"mt-2" %></td>
           </tr>
         </table>
-      <div class="d-flex flex-wrap">
-        <%= f.label :タグ付け, class:"mt-2 ml-4 text-secondary" %>
-        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-          <span class="mt-2 ml-4"><%= tag.label {tag.check_box + tag.text} %></span>
-        <% end %>
-      </div>
+        <div class="d-flex flex-wrap">
+          <%= f.label :タグ付け, class:"mt-2 ml-4 text-secondary" %>
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+            <span class="mt-2 ml-4"><%= tag.label {tag.check_box + tag.text} %></span>
+          <% end %>
+        </div>
 
-      <div class="text-center">
-        <div class="form-group mt-2">
-          <%= f.select :status, PostVideo.statuses.keys.map { |k| [t("enums.post_video.status.#{k}"), k] }, {} %>
+        <div class="text-center">
+          <div class="form-group mt-2">
+            <%= f.select :status, PostVideo.statuses.keys.map { |k| [t("enums.post_video.status.#{k}"), k] }, {} %>
+          </div>
+          <div class="actions pb-3">
+            <%= f.submit "OK" %>
+          </div>
         </div>
-        <div class="actions pb-3">
-          <%= f.submit "OK" %>
-        </div>
-      </div>
       </div>
     </div>
   </div>

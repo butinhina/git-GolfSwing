@@ -1,12 +1,8 @@
 <%= form_with url: public_post_videos_path, method: :get do |f| %>
-
   <ul class="list-unstyled">
     <li><%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %></li>
     <div class="text-center mt-2 pb-2">
       <%= submit_tag '検索' %>
     </div>
   </ul>
-
-
-
 <% end %>

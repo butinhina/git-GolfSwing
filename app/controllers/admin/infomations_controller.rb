@@ -1,4 +1,5 @@
 class Admin::InfomationsController < ApplicationController
+before_action :set_infomation, only: [:edit, :update, :destroy]
 
   def new
     @infomation = Infomation.new
@@ -15,19 +16,23 @@ class Admin::InfomationsController < ApplicationController
   end
 
   def edit
-    @infomation = Infomation.find(params[:id])
   end
 
   def update
-    Infomation.find(params[:id]).update(infomation_params)
+    @infomation.update(infomation_params)
     redirect_to public_about_path
   end
 
   def destroy
-    Infomation.find(params[:id]).destroy
+    @infomation.destroy
     redirect_to request.referer
   end
+
   private
+
+  def set_infomation
+    @infomation = Infomation.find(params[:id])
+  end
 
   def infomation_params
     params.require(:infomation).permit(:content)

@@ -1,26 +1,26 @@
 <div class="container">
-<div class="text-center">
-<h4 class="mt-3 text-secondary">About</h4>
-<p>
+  <div class="text-center">
+  <h4 class="mt-3 text-secondary">About</h4>
+  <p>
   Golf Swingは、スイング管理に特化したコミュニティサイトです。</br>
   みんなでスウィングを共有することでモチベーションを上げ、1人での悩みすぎを防ぐことができます。</br>
   また、日々のスウィングを管理する事で後から研究したり、成長を目で確認することが可能です。
-</p>
+  </p>
 
-<h4 class="text-danger mt-5">Golf Swingからのお願い！</h4>
-<p>
+  <h4 class="text-danger mt-5">Golf Swingからのお願い！</h4>
+  <p>
   ゴルフスウィング以外の投稿や不適切な内容のコメントが見受けられた場合、管理側で削除させて頂くことがあります。</br>
   また、他人を傷つけるようなコメントは絶対にしないようお願い申し上げます。
-</p>
+  </p>
 
-<h4 class="text-warning mt-5">Information</h4>
-<% @infomations.each do |infomation| %>
-<div class="d-flex flex-column mt-3">
-  <div class="row justify-content-center">
-    <h6 class="text-info mr-3"><%= infomation.created_at.strftime('%Y-%m-%d') %></h6>
-    <h6><%= infomation.content %></h6>
+  <h4 class="text-warning mt-5">Information</h4>
+    <% @infomations.each do |infomation| %>
+    <div class="d-flex flex-column mt-3">
+      <div class="row justify-content-center">
+        <h6 class="text-info mr-3"><%= infomation.created_at.strftime('%Y-%m-%d') %></h6>
+        <h6><%= infomation.content %></h6>
+      </div>
+    </div>
+    <% end %>
   </div>
-</div>
-<% end %>
-</div>
 </div>

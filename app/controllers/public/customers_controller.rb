@@ -7,19 +7,14 @@ class Public::CustomersController < ApplicationController
     @post_videos = @customer.post_videos.published.page(params[:page]).reverse_order # 投稿したものだけ表示
 
     if params[:tag_ids].present?
-      @post_videos = []
-      params[:tag_ids].each do |key, value|
-        @post_videos += Tag.find_by(name: key).post_videos if value == "1"
-        # @post_videosの中から、current_customerのものだけ表示したい
-        # ここは回りくどい処理だが、上記の処理だと他の方法が見つからなかったため下記のような処理になっている
-        @post_videos.each do |post_video|
-          if post_video.customer_id != current_customer.id
-          @post_videos.delete(post_video)
-          end
-        end
-      end
-      @post_videos.uniq!
+      params[:tag_ids].shift
+       @post_videos = PostVideo.includes(:post_tags).where(post_tags: {tag_id: params[:tag_ids]}).published.page(params[:page]).reverse_order
     end
+       @post_videos.each do |post_video|
+         if post_video.customer_id != current_customer.id # @post_videosの中から、current_customerのものだけ表示したい
+           @post_videos.delete(post_video)
+         end
+       end
   end
 
   def edit

@@ -17,18 +17,23 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
   end
 
   def index
-    @post_videos = PostVideo.published.page(params[:page]).reverse_order #投稿されたものだけを取得
+    @post_videos = PostVideo.published.page(params[:page]).reverse_order
     #パラメータがあればindexアクション内でtagsテーブルに保存
     if params[:tag]
       Tag.create(name: params[:tag])
     end
     #タグのOR検索
     if params[:tag_ids].present?  #tag_idsが存在していたら
-      @post_videos = []  #一旦空にする
-      params[:tag_ids].each do |key, value| #tag_idsの中から選択された=>"1", 選択なし=>"0"
-        @post_videos += Tag.find_by(name: key).post_videos if value == "1" #1の（選択された）タグ名を1つずつ@post_videosに収めていく
-      end
-      @post_videos.uniq! #重複しているものを削除して、削除後の配列として返す
+
+      #params[:tag_ids].each do |key, value| #tag_idsの中から選択された=>"1", 選択なし=>"0"
+        params[:tag_ids].shift
+
+        @post_videos = PostVideo.includes(:post_tags).where(post_tags: {tag_id: params[:tag_ids]}).published.page(params[:page]).reverse_order
+        #@post_videos += Tag.find_by(name: key).post_videos.page(params[:page]).reverse_order  #1の（選択された）タグ名を1つずつ@post_videosに収めていく
+      #end
+      #@post_videos.uniq! #重複しているものを削除して、削除後の配列として返す
+    # else
+    #   @post_videos = PostVideo.published.page(params[:page]).reverse_order #投稿されたものだけを取得
     end
   end
 
@@ -58,12 +63,12 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
   end
 
   def search
-    @post_videos = PostVideo.published.search(params[:keyword])
+    @post_videos = PostVideo.published.search(params[:keyword]).page(params[:page])
     @keyword = params[:keyword]
   end
 
   def my_search
-    @post_videos = PostVideo.published.search(params[:keyword])
+    @post_videos = PostVideo.published.search(params[:keyword]).page(params[:page])
     @keyword = params[:keyword]
   end
 

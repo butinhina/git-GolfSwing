@@ -5,42 +5,41 @@
     </div>
     <div class="col-4 mt-4 text-center">
      <%= form_with url: my_search_public_post_videos_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, value: "", placeholder: "My_swing Search", class:"form-control" %>
+      <%= f.text_field :keyword, value: @keyword, placeholder: "My_swing Search", class:"form-control" %>
      <% end %>
     </div>
   </div>
  <div class="row">
   <div class="col-12 col-md-9 d-flex flex-wrap mt-4">
-  <% @post_videos.each do |post_video| %>
-    <% if post_video.customer_id == current_customer.id %>
-   <div class="mx-auto h-50">
-     <div class="card border-0">
-       <%= video_tag rails_blob_path(post_video.get_video), :width => "240", :height => "160" %>
-       <div class="card-body text-center pt-0">
-         <%= link_to public_post_video_path(post_video.id) do %>
-           <%= post_video.created_at.strftime("%Y/%m/%d") %>
-         <% end %>
-       </div>
-     </div>
-   </div>
+    <% @post_videos.each do |post_video| %>
+      <% if post_video.customer_id == current_customer.id %>
+      <div class="mx-auto h-50">
+        <div class="card border-0">
+          <%= video_tag rails_blob_path(post_video.get_video), :width => "240", :height => "160" %>
+          <div class="card-body text-center pt-0">
+            <%= link_to public_post_video_path(post_video.id) do %>
+              <%= post_video.created_at.strftime("%Y/%m/%d") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
     <% end %>
-  <% end %>
   </div>
-   <div class="col-8 col-md-3 mx-auto">
-     <div class="mt-3 bg-light">
-        <%= form_with url: public_customer_path(current_customer.id), method: :get do |f| %>
+  <div class="col-8 col-md-3 mx-auto">
+    <div class="mt-3 bg-light">
+      <%= form_with url: public_customer_path(current_customer.id), method: :get do |f| %>
         <ul class="list-unstyled">
           <% Tag.all.each do |t| %>
             <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
           <% end %>
-
-        <div class="text-center mt-2 pb-2">
-          <%= submit_tag 'My swing検索' %>
-        </div>
+          <div class="text-center mt-2 pb-2">
+            <%= submit_tag 'My swing検索' %>
+          </div>
         </ul>
-        <% end %>
-     </div>
-   </div>
+      <% end %>
+    </div>
+  </div>
  </div>
  <div class="pagination justify-content-center pagination-sm"><%= paginate @post_videos %></div>
 </div>

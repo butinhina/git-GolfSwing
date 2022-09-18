@@ -1,26 +1,26 @@
 <div class="container">
-<h2 class="mt-4">「<%= @keyword %>」の検索結果</h2>
- <div class="row">
-  <div class="col-12 col-md-9 d-flex flex-wrap mt-1">
-  <% @post_videos.each do |post_video| %>
-   <div class="mx-auto h-50">
-     <div class="card border-0">
-       <%= video_tag rails_blob_path(post_video.get_video), :width => "240", :height => "160" %>
-       <div class="card-body text-center pt-0">
-         <%= link_to public_post_video_path(post_video.id) do %>
-           <%= post_video.created_at.strftime("%Y/%m/%d") %>
-         <% end %>
-       </div>
-     </div>
-   </div>
-  <% end %>
+  <h3 class="mt-4">「<%= @keyword %>」の検索結果</h3>
+  <div class="row">
+    <div class="col-12 col-md-9 d-flex flex-wrap mt-1">
+    <% @post_videos.each do |post_video| %>
+      <div class="mx-auto h-50">
+        <div class="card border-0">
+          <%= video_tag rails_blob_path(post_video.get_video), :width => "240", :height => "160" %>
+          <div class="card-body text-center pt-0">
+            <%= link_to public_post_video_path(post_video.id) do %>
+              <%= post_video.created_at.strftime("%Y/%m/%d") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    <div class="col-8 col-md-3 mx-auto">
+      <div class="bg-light">
+        <%= render 'list' %>
+      </div>
+    </div>
   </div>
-   <div class="col-8 col-md-3 mx-auto">
-     <div class="bg-light">
-       <%= render 'list' %>
-     </div>
-   </div>
- </div>
  <div class="pagination justify-content-center pagination-sm"><%= paginate @post_videos %></div>
 </div>
 

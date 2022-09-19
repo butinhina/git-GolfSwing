@@ -51,7 +51,7 @@ class Customer < ApplicationRecord
 
   def profile_image_type
     return true if self.email == 'guest@example.com'
-    if profile_image.blob.content_type.in?(%('image/jpg image/png'))
+    if !profile_image.blob.content_type.in?(%('image/jpg image/png'))
       errors.add(:profile_image, 'はjpegまたはpng形式でアップロードしてください')
     end
   end

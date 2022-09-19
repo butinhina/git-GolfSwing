@@ -8,12 +8,12 @@ class Public::CustomersController < ApplicationController
 
     if params[:tag_ids].present?
       params[:tag_ids].shift
-       @post_videos = PostVideo.includes(:post_tags).where(post_tags: {tag_id: params[:tag_ids]}).published.page(params[:page]).reverse_order
-      @post_videos.each do |post_video|
-        if post_video.customer_id != current_customer.id # @post_videosの中から、current_customerのものだけ表示したい
-          @post_videos.destroy(post_video)
-        end
-      end
+       @post_videos = PostVideo.includes(:post_tags).where(post_tags: {tag_id: params[:tag_ids]}).where(customer_id: current_customer.id).published.page(params[:page]).reverse_order
+      # @post_videos.each do |post_video|
+      #   if post_video.customer_id != current_customer.id # @post_videosの中から、current_customerのものだけ表示したい
+      #     @post_videos.destroy(post_video)
+      #   end
+      # end
     end
   end
 

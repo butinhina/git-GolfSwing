@@ -11,7 +11,7 @@ class Public::BookmarksController < ApplicationController
   def destroy
     @post_video = PostVideo.find(params[:post_video_id])
     bookmark = @post_video.bookmarks.find_by(customer_id: current_customer.id)
-    if bookmark.present? # bookmark.present?を挟んでいるのは、２度押しのエラーを回避するため
+    if bookmark.present? # bookmark.present?を挟んでいるのは、２度押しのエラーを回避するためです。
       bookmark.destroy
       redirect_to request.referer
     end

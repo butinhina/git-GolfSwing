@@ -9,12 +9,12 @@ class Public::CustomersController < ApplicationController
     if params[:tag_ids].present?
       params[:tag_ids].shift
        @post_videos = PostVideo.includes(:post_tags).where(post_tags: {tag_id: params[:tag_ids]}).published.page(params[:page]).reverse_order
+      # @post_videos.each do |post_video|
+      #   if post_video.customer_id != current_customer.id # @post_videosの中から、current_customerのものだけ表示したい
+      #     @post_videos.delete(post_video)
+      #   end
+      # end
     end
-       @post_videos.each do |post_video|
-         if post_video.customer_id != current_customer.id # @post_videosの中から、current_customerのものだけ表示したい
-           @post_videos.delete(post_video)
-         end
-       end
   end
 
   def edit
@@ -43,11 +43,13 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  private
+  protected
 
   def set_current_customer
     @customer = current_customer
   end
+
+  private
 
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :nickname, :height, :birth_dat, :holding_ball, :history, :forte_club, :message, :profile_image)

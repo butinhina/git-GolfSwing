@@ -1,3 +1,16 @@
-<%= form_with url: my_search_public_post_videos_path, method: :get, local: true do |f| %>
-  <%= f.text_field :keyword, value: "", placeholder: "My_swing Search", class:"form-control" %>
-<% end %>
+<div class="col-12 col-md-9 d-flex flex-wrap mt-4">
+    <% post_videos.each do |post_video| %>
+      <% if post_video.customer_id == current_customer.id %>
+      <div class="mx-auto h-50">
+        <div class="card border-0">
+          <%= video_tag rails_blob_path(post_video.get_video), :width => "240", :height => "160" %>
+          <div class="card-body text-center pt-0">
+            <%= link_to public_post_video_path(post_video.id) do %>
+              <%= post_video.created_at.strftime("%Y/%m/%d") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+</div>

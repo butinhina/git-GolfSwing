@@ -26,7 +26,7 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
     if params[:tag_ids].present?  #tag_idsが存在していたら
         params[:tag_ids].shift
         @post_videos = PostVideo.includes(:post_tags).where(post_tags: {tag_id: params[:tag_ids]}).published.page(params[:page]).reverse_order
-  
+
     # else
     #   @post_videos = PostVideo.published.page(params[:page]).reverse_order #投稿されたものだけを取得
     end
@@ -67,11 +67,14 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
     @keyword = params[:keyword]
   end
 
-  private
+
+  protected
 
   def set_post_video
     @post_video = PostVideo.find(params[:id])
   end
+  
+  private
 
   def post_video_params
     params.require(:post_video).permit(:customer_id, :report, :video, :status, tag_ids: [])

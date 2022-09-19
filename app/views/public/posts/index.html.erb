@@ -1,7 +1,0 @@
-<h2>みんなのスウィング</h2>
-<% @post_videos.each do |post_video| %>
-  <%= link_to public_post_path(post_video.id) do %>
-      <%= video_tag rails_blob_path(post_video.get_video) %>
-  <% end %>
-  <%= post_video.report %>
-<% end %>

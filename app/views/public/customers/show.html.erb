@@ -5,35 +5,23 @@
      <%= render 'list', customer: @customer %>
    </div>
    <% if @customer == current_customer %>
-   <div class="col-4 align-self-center text-center">
+    <div class="col-4 align-self-center text-center">
+    <!--MySwingのキーワード検索欄  -->
      <%= form_with url: my_search_public_post_videos_path, method: :get, local: true do |f| %>
       <%= f.text_field :keyword, value: @keyword, placeholder: "My_swing Search", class:"form-control" %>
      <% end %>
-   </div>
-   <% end %>
-   <% if @customer == current_customer %>
-   <div class="col-4 align-self-center text-right">
+    </div>
+    <div class="col-4 align-self-center text-right">
      <%= link_to "投稿する", new_public_post_video_path, class:"text-secondary" %>
-   </div>
+    </div>
    <% end %>
   </div>
   <div class="row">
-    <div class="col-12 col-md-9 d-flex flex-wrap mt-3 ">
-      <%= render 'public/post_videos/index', post_videos: @post_videos %>
-    </div>
+    <!--current_customerの投稿一覧-->
+    <%= render 'public/post_videos/search', post_videos: @post_videos %>
+    <!--current_customerであればMy_Swingのタグ検索機能表示-->
     <% if @customer == current_customer %>
-    <div class="col-8 col-md-3 mx-auto">
-      <div class="mt-3 bg-light">
-        <%= form_with url: public_customer_path(current_customer.id), method: :get do |f| %>
-        <ul class="list-unstyled">
-          <li><%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %></li>
-        <div class="text-center mt-2 pb-2">
-          <%= submit_tag 'My swing検索' %>
-        </div>
-        </ul>
-        <% end %>
-      </div>
-    </div>
+      <%= render 'public/post_videos/list_2' %>
     <% end %>
   </div>
   <div class="pagination justify-content-center pagination-sm"><%= paginate @post_videos %></div>

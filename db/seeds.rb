@@ -39,8 +39,8 @@ customers = Customer.create(
 
 PostVideo.create(
   [
-    {report: '2022.03.28 ひなぽんスウィング', customer_id: "1", tag_id: "15", video: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/swings/ひなぽんスウィング.mp4"), filename:"ひなぽんスウィング.mp4")},
-    {report: '2020.08.05 じんスウィング', customer_id: "2", tag_id: "12", video: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/swings/じんくん後方.mp4"), filename:"じんくん後方.mp4")},
-    {report: '2021.09.21 すけスウィング', customer_id: "3", tag_id: "5", video: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/swings/ひなぽんアプローチ.mp4"), filename:"ひなぽんアプローチ.mp4")}
+    {report: '2022.03.28 ひなぽんスウィング', customer_id: "1", PostVideo.where(tag_id: 15), video: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/swings/ひなぽんスウィング.mp4"), filename:"ひなぽんスウィング.mp4")},
+    {report: '2020.08.05 じんスウィング', customer_id: "2", PostVideo.where(tag_id: 12), video: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/swings/じんくん後方.mp4"), filename:"じんくん後方.mp4")},
+    {report: '2021.09.21 すけスウィング', customer_id: "3", PostVideo.where(tag_id: 5), video: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/swings/ひなぽんアプローチ.mp4"), filename:"ひなぽんアプローチ.mp4")}
   ]
 )

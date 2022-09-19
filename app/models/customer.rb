@@ -43,14 +43,14 @@ class Customer < ApplicationRecord
   private
 
   def profile_image_size
-    return true unless profile_image
+    return true if self.email == 'guest@example.com'
     if profile_image.blob.byte_size > 1.megabytes
       errors.add(:profile_image, "は1つのファイル1MB以内にしてください")
     end
   end
 
   def profile_image_type
-    return true unless profile_image
+    return true if self.email == 'guest@example.com'
     if !profile_image.blob.content_type.in?(%('image/jpg image/png'))
       errors.add(:profile_image, 'はjpegまたはpng形式でアップロードしてください')
     end

@@ -18,7 +18,7 @@
   </div>
   <div class="row">
     <!--current_customerの投稿一覧-->
-    <%= render 'public/post_videos/search', post_videos: @post_videos %>
+    <%= render 'public/post_videos/index', post_videos: @post_videos %>
     <!--current_customerであればMy_Swingのタグ検索機能表示-->
     <% if @customer == current_customer %>
       <%= render 'public/post_videos/list_2' %>

@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
- before_action :check_guest, only: :withdraw
+before_action :check_guest, only: :withdraw
  before_action :set_current_customer, except: [:show, :check_guest]
 
   def show

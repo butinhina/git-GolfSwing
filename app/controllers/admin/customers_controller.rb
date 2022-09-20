@@ -8,7 +8,7 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
-    @customer.update(customer_params)
+    @customer.update!(customer_params)
     redirect_to admin_path(@customer.id)
   end
 

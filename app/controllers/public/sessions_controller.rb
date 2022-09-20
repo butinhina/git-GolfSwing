@@ -39,7 +39,7 @@ class Public::SessionsController < Devise::SessionsController
   protected
   # 退会しているかを判断するメソッド
   def customer_state
-    @customer = Customer.find_by(email:params[:customer][:email]) # 入力されたemailからアカウントを1件取得
+    @customer = Customer.find_by(email: params[:customer][:email]) # 入力されたemailからアカウントを1件取得
     return if !@customer # アカウントを取得できなかった場合、このメソッドを終了する
     # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別し、一致してアカウントが退会していた場合
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_active == false

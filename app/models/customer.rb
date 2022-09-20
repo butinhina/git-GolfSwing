@@ -19,7 +19,7 @@ class Customer < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true
   validates :nickname, presence: true
-  validate :profile_image_size #, :profile_image_type
+  # validate :profile_image_size #, :profile_image_type
 
   def get_profile_image(width,height)
     unless profile_image.attached?

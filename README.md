@@ -22,6 +22,12 @@
 ## 設計書
 実装機能リストのURL
 https://docs.google.com/spreadsheets/d/1CH-JDPaa5ANSZFf4xlTuxAst7n-vRsowzb4PtekQHUI/edit?usp=sharing
+詳細設計書のURL
+https://docs.google.com/spreadsheets/d/1YdW93EyX96hPhfTPAywlCatSwbjb02loS12XpPIlr1g/edit?usp=sharing
+テーブル定義書のURL
+https://docs.google.com/spreadsheets/d/126DZ6svBKOhxiP16WWfjQTJKvqPLfa9dveoUhs61bBQ/edit?usp=sharing
+ER図のURL
+https://drive.google.com/file/d/1rSA8tbhzVPMTD0uRMk4AwQZ0lglFeDJy/view?usp=sharing
 
 
 ## 開発環境
@@ -32,4 +38,4 @@ https://docs.google.com/spreadsheets/d/1CH-JDPaa5ANSZFf4xlTuxAst7n-vRsowzb4PtekQ
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です
+なし

@@ -20,13 +20,13 @@
 
 
 ## 設計書
-実装機能リストのURL
+- 実装機能リストのURL
 https://docs.google.com/spreadsheets/d/1CH-JDPaa5ANSZFf4xlTuxAst7n-vRsowzb4PtekQHUI/edit?usp=sharing
-詳細設計書のURL
+- 詳細設計書のURL
 https://docs.google.com/spreadsheets/d/1YdW93EyX96hPhfTPAywlCatSwbjb02loS12XpPIlr1g/edit?usp=sharing
-テーブル定義書のURL
+- テーブル定義書のURL
 https://docs.google.com/spreadsheets/d/126DZ6svBKOhxiP16WWfjQTJKvqPLfa9dveoUhs61bBQ/edit?usp=sharing
-ER図のURL
+- ER図のURL
 https://drive.google.com/file/d/1rSA8tbhzVPMTD0uRMk4AwQZ0lglFeDJy/view?usp=sharing
 
 

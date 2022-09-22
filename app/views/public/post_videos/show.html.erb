@@ -72,9 +72,9 @@
 
     <%= form_with model: [@post_video, @post_comment], url: public_post_video_post_comments_path(@post_video) do |f| %>
       <div class="text-center">
-        <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %>
+        <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに", class:"form-control form-control-sm" %>
       </div>
-      <div class="text-center pb-2">
+      <div class="text-center mt-2 pb-2">
         <%= f.submit "投稿" %>
       </div>
     <% end %>

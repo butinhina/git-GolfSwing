@@ -14,12 +14,12 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/"><%= image_tag('preview-6.jpg') %></a>
+          <a class="navbar-brand mt-2" href="/"><%= image_tag('preview-6.jpg') %></a>
           <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav mt-3">
+            <ul class="navbar-nav mt-4">
             <% if customer_signed_in? %>
             <li class="nav-item mr-3">
               <%= link_to "About", public_about_path, class: "text-dark" %>
@@ -47,11 +47,10 @@
               <%= link_to "Logout", destroy_customer_session_path, method: :delete, class: "text-dark" %>
             </li>
 
-              <p class="text-secondary mx-5">ようこそ、<%= current_customer.first_name %>さん！</p>
-              <div class= "d-flex mx-5 search-form mr-1">
+              <p class="text-secondary mx-5 mt-1">ようこそ、<%= current_customer.first_name %>さん！</p>
+              <div class= "d-flex mx-5 search-form">
                 <%= form_with url: search_public_post_videos_path, method: :get, local: true do |f| %>
-                  <%= f.text_field :keyword, value: @keyword, placeholder: "Swings search" %>
-                  <%= f.submit "検索", class:" btn btn-dark btn-sm mb-1" %>
+                  <%= f.text_field :keyword, value: @keyword, placeholder: "Swings search", class:"form-control" %>
                 <% end %>
               </div>
 

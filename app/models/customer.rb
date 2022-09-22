@@ -19,7 +19,7 @@ class Customer < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true
   validates :nickname, presence: true
-  # validate :profile_image_size #, :profile_image_type
+  validate :profile_image_size, :profile_image_type
 
   def get_profile_image(width,height)
     unless profile_image.attached?
@@ -43,15 +43,18 @@ class Customer < ApplicationRecord
   private
 
   def profile_image_size
+    # byebug
     return true if self.email == 'guest@example.com'
-    if profile_image.blob.byte_size > 1.megabytes
+    if !profile_image.attached?
+      profile_image.attach(io: File.open("#{Rails.root.join}/app/assets/images/no_image.jpeg"),filename: 'default-image.jpg', content_type: 'image/jpeg')
+    elsif profile_image.blob.byte_size > 1.megabytes
       errors.add(:profile_image, "は1つのファイル1MB以内にしてください")
     end
   end
 
   def profile_image_type
     return true if self.email == 'guest@example.com'
-      if !profile_image.blob.content_type.in?(%('image/jpg image/png'))
+      if !profile_image.blob.content_type.in?(%('image/jpg image/png image/jpeg'))
        errors.add(:profile_image, 'はjpegまたはpng形式でアップロードしてください')
       end
   end

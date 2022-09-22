@@ -46,8 +46,8 @@
             <li class="nav-item mr-3">
               <%= link_to "Logout", destroy_customer_session_path, method: :delete, class: "text-dark" %>
             </li>
-
-              <p class="text-secondary mx-5 mt-1">ようこそ、<%= current_customer.first_name %>さん！</p>
+            
+            <p class="text-secondary mx-5 mt-1">ようこそ、<%= current_customer.first_name %>さん！</p>
               <div class= "d-flex mx-5 search-form">
                 <%= form_with url: search_public_post_videos_path, method: :get, local: true do |f| %>
                   <%= f.text_field :keyword, value: @keyword, placeholder: "Swings search", class:"form-control" %>

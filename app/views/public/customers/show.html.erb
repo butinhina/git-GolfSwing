@@ -1,19 +1,17 @@
 <div class="container">
   <%= notice %>
   <div class="row">
-   <div class="col-4 mt-4" >
+   <div class="col-8 col-md-9 mt-4 mx-auto mb-2" >
      <%= render 'list', customer: @customer %>
    </div>
    <% if @customer == current_customer %>
-    <div class="col-4 align-self-center text-center">
+    <div class="col-8 col-md-3 align-self-center mx-auto">
     <!--MySwingのキーワード検索欄  -->
      <%= form_with url: my_search_public_post_videos_path, method: :get, local: true do |f| %>
       <%= f.text_field :keyword, value: @keyword, placeholder: "My_swing Search", class:"form-control" %>
      <% end %>
     </div>
-    <div class="col-4 align-self-center text-right">
-     <%= link_to "投稿する", new_public_post_video_path, class:"text-secondary" %>
-    </div>
+
    <% end %>
   </div>
   <div class="row">

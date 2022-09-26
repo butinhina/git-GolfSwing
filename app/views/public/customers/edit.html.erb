@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <h4 class="text-center text-secondary mt-4">Member information</h4>
   <% if @customer.errors.any? %>
     <%= @customer.errors.count %>件のエラーが発生しました
@@ -9,64 +9,60 @@
     </ul>
   <% end %>
   <%= form_with model: @customer, url: public_customer_path(@customer.id), method: :patch do |f| %>
-  <div class="row">
-    <div class="col-12 col-sm-10 col-md-6 mx-auto">
+    <div class="w-75 mx-auto">
       <div class="d-flex flex-column justify-content-center">
-        <table class="table table-bordered mt-3">
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :名前, class:"mt-2" %><span class="text-danger">［必須］</span></th>
-            <td><%= f.text_field :last_name, class:"mt-2" %> <%= f.text_field :first_name, class:"mt-2" %></td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :フリガナ, class:"mt-2" %><span class="text-danger">［必須］</span></th>
-            <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana, class:"mt-2" %></td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :メールアドレス, class:"mt-2" %><span class="text-danger">［必須］</span></th>
-            <td><%= f.email_field :email, class:"mt-2" %></td>
-          </tr>
-          <tr>
-            <td colspan="2"><span class="text-secondary">〜ここからプロフィール内容として使用〜</span></td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary" ><%= f.label :プロフィール画像, class:"mt-2" %></th>
-            <td><%= f.file_field :profile_image, accept: "image/*", class:"mt-2" %></td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :ニックネーム, class:"mt-2" %><span class="text-danger">［必須］</span></th>
-            <td><%= f.text_field :nickname, class:"mt-2" %></td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :身長, class:"mt-2" %></th>
-            <td><%= f.text_field :height, class:"mt-2" %>cm</td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :生年月日, class:"mt-2" %></th>
-            <td><%= f.text_field :birth_dat, class:"mt-2" %></td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :持ち球, class:"mt-2" %></th>
-            <td><%= f.text_field :holding_ball, class:"mt-2" %></td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :ゴルフ歴, class:"mt-2" %></th>
-            <td><%= f.text_field :history, class:"mt-2" %>年</td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :得意クラブ, class:"mt-2" %></th>
-            <td><%= f.text_field :forte_club, class:"mt-2" %></td>
-          </tr>
-          <tr>
-            <th class="table-light text-secondary"><%= f.label :ひとこと, class:"mt-2" %></th>
-            <td><%= f.text_field :message, class:"mt-2" %></td>
-          </tr>
-        </table>
-        <div class="text-center">
-          <%= f.submit "変更内容を保存", class: "mt-2" %>
-          <%= link_to "退会する", public_customer_unsubscribe_path(@customer.id), class:"btn btn-danger btn-sm ml-5 mt-2" %>
-        </div>
+          <div class="row border mt-3">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :名前 %><span class="text-danger">［必須］</span></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.text_field :last_name %> <%= f.text_field :first_name %></div>
+          </div>
+          <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :フリガナ %><span class="text-danger">［必須］</span></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></div>
+          </div>
+          <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :メールアドレス %><span class="text-danger">［必須］</span></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.email_field :email %></div>
+          </div>
+          <div>
+            <div class="row border justify-content-center text-secondary">〜ここからプロフィール内容として使用〜</span></div>
+          </div>
+          <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :プロフィール画像 %></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.file_field :profile_image, accept: "image/*" %></div>
+          </div>
+          <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :ニックネーム %><span class="text-danger">［必須］</span></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.text_field :nickname %></div>
+          </div>
+          <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :身長 %></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.text_field :height %>cm</div>
+          </div>
+         <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :生年月日 %></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.text_field :birth_dat %></div>
+          </div>
+          <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :持ち球 %></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.text_field :holding_ball %></div>
+          </div>
+          <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :ゴルフ歴 %></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.text_field :history %>年</div>
+          </div>
+          <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :得意クラブ %></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.text_field :forte_club %></div>
+          </div>
+          <div class="row border">
+            <div class="col-12 col-md-4 bg-light py-2"><%= f.label :ひとこと %></div>
+            <div class="col-12 col-md-8 py-2 mx-auto"><%= f.text_field :message %></div>
+          </div>
+          <div class="row mt-3 justify-content-center">
+            <div class="col-12 col-md-2 mx-auto"><%= f.submit "変更内容を保存" %></div>
+            <div class="col-12 col-md-2 mx-auto"><%= link_to "退会する", public_customer_unsubscribe_path(@customer.id), class:"btn btn-danger btn-sm" %></div>
+          </div>
       </div>
     </div>
-  </div>
   <% end %>
 </div>

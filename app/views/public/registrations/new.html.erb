@@ -4,70 +4,76 @@
   <%= form_with model: @customer, url: customer_registration_path do |f| %>
   <div class="w-75 mx-auto">
     <div class="d-flex flex-column justify-content-center">
-      <p class="text-danger text-center">※は必須項目です</p>
-    <table class="table table-border">
-      <div class="row border">
+      <div class="row border mt-3">
         <div class="col-12 col-md-4 bg-light py-2">
-          <%= f.label :名前 %><span class="text-danger">※</span>
+          <%= f.label :名前 %><span class="text-danger">［必須］</span>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.text_field :last_name, :placeholder => "姓" %> <%= f.text_field :first_name, :placeholder => "名" %>
         </div>
       </div>
       <div class="row border">
         <div class="col-12 col-md-4 bg-light py-2">
-          <%= f.label :フリガナ %><span class="text-danger">※</span>
+          <%= f.label :フリガナ %><span class="text-danger">［必須］</span>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.text_field :last_name_kana, :placeholder => "セイ" %> <%= f.text_field :first_name_kana, :placeholder => "メイ" %>
         </div>
       </div>
       <div class="row border">
         <div class="col-12 col-md-4 bg-light py-2">
-          <%= f.label :メールアドレス %><span class="text-danger">※</span>
+          <%= f.label :メールアドレス %><span class="text-danger">［必須］</span>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
       </div>
       <div class="row border">
         <div class="col-12 col-md-4 bg-light py-2">
-          <%= f.label :パスワード（６文字以上） %><span class="text-danger">※</span>
+          <%= f.label :パスワード（６文字以上） %><span class="text-danger">［必須］</span>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
       </div>
       <div class="row border">
         <div class="col-12 col-md-4 bg-light py-2">
-          <%= f.label :パスワード（確認用） %><span class="text-danger">※</span>
+          <%= f.label :パスワード（確認用） %><span class="text-danger">［必須］</span>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
       </div>
-      <div class="row border justify-content-center">〜ここからプロフィール内容として使用〜</div>
+      <div class="row border justify-content-center text-secondary">〜ここからプロフィール内容として使用〜</div>
       <div class="row border">
         <div class="col-12 col-md-4 bg-light py-2">
           <%= f.label :プロフィール画像 %>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.file_field :profile_image, accept: "image/*" %>
         </div>
       </div>
       <div class="row border">
         <div class="col-12 col-md-4 bg-light py-2">
-          <%= f.label :ニックネーム %><span class="text-danger">※</span>
+          <%= f.label :ニックネーム %><span class="text-danger">［必須］</span>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.text_field :nickname %>
+        </div>
+      </div>
+      <div class="row border">
+        <div class="col-12 col-md-4 bg-light py-2">
+          <%= f.label :身長, class:"mt-2" %>
+        </div>
+        <div class="col-12 col-md-8 py-2 mx-auto">
+          <%= f.text_field :height %>cm
         </div>
       </div>
       <div class="row border">
         <div class="col-12 col-md-4 bg-light py-2">
           <%= f.label :生年月日 %>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.text_field :birth_dat %>
         </div>
       </div>
@@ -75,7 +81,7 @@
         <div class="col-12 col-md-4 bg-light py-2">
           <%= f.label :持ち球 %>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.text_field :holding_ball %>
         </div>
       </div>
@@ -83,7 +89,7 @@
         <div class="col-12 col-md-4 bg-light py-2">
           <%= f.label :ゴルフ歴 %>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.text_field :history %>年
         </div>
       </div>
@@ -91,7 +97,7 @@
         <div class="col-12 col-md-4 bg-light py-2">
           <%= f.label :得意クラブ %>
         </div>
-        <div class="col-12 col-md-8 py-2">
+        <div class="col-12 col-md-8 py-2 mx-auto">
           <%= f.text_field :forte_club %>
         </div>
       </div>
@@ -99,11 +105,10 @@
         <div class="col-12 col-md-4 bg-light py-2">
           <%= f.label :ひとこと %>
         </div>
-        <div class="col-12 col-md-8 py-2">
-          <%= f.text_field :message, class:"form-control form-control-sm" %>
+        <div class="col-12 col-md-8 py-2 mx-auto">
+          <%= f.text_field :message %>
         </div>
       </div>
-    </table>
       <div class="text-center">
         <div class="actions">
           <%= f.submit "新規登録", class:"mt-3" %>

@@ -2,60 +2,60 @@
   <h4 class="text-center text-secondary mt-4">Sign up</h4>
   <%= render "public/shared/error_messages", resource: resource %>
   <%= form_with model: @customer, url: customer_registration_path do |f| %>
-  <div class="w-75 mx-auto">
+  <div class="w-100 mx-auto">
     <div class="d-flex flex-column justify-content-center">
-      <div class="row border mt-3">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :名前 %><span class="text-danger">［必須］</span></div>
-        <div class="col-12 col-md-8 py-1"><%= f.text_field :last_name, :placeholder => "姓" %> <%= f.text_field :first_name, :placeholder => "名" %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :last_name, :placeholder => "姓", class:"form-control form-control-sm" %> <%= f.text_field :first_name, :placeholder => "名", class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :フリガナ %><span class="text-danger">［必須］</span></div>
-        <div class="col-12 col-md-8 py-1"><%= f.text_field :last_name_kana, :placeholder => "セイ" %> <%= f.text_field :first_name_kana, :placeholder => "メイ" %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :last_name_kana, :placeholder => "セイ", class:"form-control form-control-sm" %> <%= f.text_field :first_name_kana, :placeholder => "メイ", class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :メールアドレス %><span class="text-danger">［必須］</span></div>
-        <div class="col-12 col-md-8 py-1"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :パスワード（６文字以上） %><span class="text-danger">［必須］</span></div>
-        <div class="col-12 col-md-8 py-1"><%= f.password_field :password, autocomplete: "new-password" %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.password_field :password, autocomplete: "new-password", class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :パスワード（確認用） %><span class="text-danger">［必須］</span></div>
-        <div class="col-12 col-md-8 py-1"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border justify-content-center text-secondary">〜ここからプロフィール内容として使用〜</div>
-      <div class="row border">
+      <div class="row justify-content-center text-secondary">〜ここからプロフィール内容として使用〜</div>
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :プロフィール画像 %></div>
-        <div class="col-12 col-md-8 py-1"><%= f.file_field :profile_image, accept: "image/*" %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.file_field :profile_image, accept: "image/*" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :ニックネーム %><span class="text-danger">［必須］</span></div>
-        <div class="col-12 col-md-8 py-1"><%= f.text_field :nickname %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :nickname, class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :身長, class:"mt-2" %></div>
-        <div class="col-12 col-md-8 py-1"><%= f.text_field :height %>cm</div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :height, class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :生年月日 %></div>
-        <div class="col-12 col-md-8 py-1"><%= f.text_field :birth_dat %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :birth_dat, class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :持ち球 %></div>
-        <div class="col-12 col-md-8 py-1"><%= f.text_field :holding_ball %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :holding_ball, class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :ゴルフ歴 %></div>
-        <div class="col-12 col-md-8 py-1"><%= f.text_field :history %>年</div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :history, class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :得意クラブ %></div>
-        <div class="col-12 col-md-8 py-1"><%= f.text_field :forte_club %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :forte_club, class:"form-control form-control-sm" %></div>
       </div>
-      <div class="row border">
+      <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :ひとこと %></div>
-        <div class="col-12 col-md-8 py-1"><%= f.text_field :message %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :message, class:"form-control form-control-sm" %></div>
       </div>
       <div class="text-center">
         <div class="actions"><%= f.submit "新規登録", class:" btn btn-secondary btn-sm mt-3" %></div>

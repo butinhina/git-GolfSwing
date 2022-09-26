@@ -10,51 +10,51 @@
   <% end %>
   <%= form_with model: @customer, url: public_customer_path(@customer.id), method: :patch do |f| %>
     <div class="w-75 mx-auto">
-      <div class="d-flex flex-column justify-content-center">
-        <div class="row border mt-3">
+      <div class="d-flex flex-column">
+        <div class="row mt-3 mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :名前 %><span class="text-danger">［必須］</span></div>
-          <div class="col-12 col-md-8 py-1"><%= f.text_field :last_name %> <%= f.text_field :first_name %></div>
+          <div class="col-12 col-md-5 py-1"><%= f.text_field :last_name, class:"form-control form-control-sm" %> <%= f.text_field :first_name, class:"form-control form-control-sm" %></div>
         </div>
-        <div class="row border">
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :フリガナ %><span class="text-danger">［必須］</span></div>
-          <div class="col-12 col-md-8 py-1"><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></div>
+          <div class="col-12 col-md-5 py-1"><%= f.text_field :last_name_kana, class:"form-control form-control-sm" %> <%= f.text_field :first_name_kana, class:"form-control form-control-sm" %></div>
         </div>
-        <div class="row border">
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :メールアドレス %><span class="text-danger">［必須］</span></div>
-          <div class="col-12 col-md-8 py-1"><%= f.email_field :email %></div>
+          <div class="col-12 col-md-5 py-1"><%= f.email_field :email, class:"form-control form-control-sm" %></div>
         </div>
-        <div class="row border justify-content-center text-secondary">〜ここからプロフィール内容として使用〜</span></div>
-        <div class="row border">
+        <div class="row justify-content-center text-secondary">〜ここからプロフィール内容として使用〜</span></div>
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :プロフィール画像 %></div>
-          <div class="col-12 col-md-8 py-1"><%= f.file_field :profile_image, accept: "image/*" %></div>
+          <div class="col-12 col-md-5 py-1"><%= f.file_field :profile_image, accept: "image/*" %></div>
         </div>
-        <div class="row border">
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :ニックネーム %><span class="text-danger">［必須］</span></div>
-          <div class="col-12 col-md-8 py-1"><%= f.text_field :nickname %></div>
+          <div class="col-12 col-md-5 py-1"><%= f.text_field :nickname, class:"form-control form-control-sm" %></div>
         </div>
-        <div class="row border">
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :身長 %></div>
-          <div class="col-12 col-md-8 py-1"><%= f.text_field :height %>cm</div>
+          <div class="col-12 col-md-5 py-1"><%= f.text_field :height, class:"form-control form-control-sm" %></div>
         </div>
-        <div class="row border">
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :生年月日 %></div>
-          <div class="col-12 col-md-8 py-1"><%= f.text_field :birth_dat %></div>
+          <div class="col-12 col-md-5 py-1"><%= f.text_field :birth_dat, class:"form-control form-control-sm" %></div>
         </div>
-        <div class="row border">
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :持ち球 %></div>
-          <div class="col-12 col-md-8 py-1"><%= f.text_field :holding_ball %></div>
+          <div class="col-12 col-md-5 py-1"><%= f.text_field :holding_ball, class:"form-control form-control-sm" %></div>
         </div>
-        <div class="row border">
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :ゴルフ歴 %></div>
-          <div class="col-12 col-md-8 py-1"><%= f.text_field :history %>年</div>
+          <div class="col-12 col-md-5 py-1"><%= f.text_field :history, class:"form-control form-control-sm" %></div>
         </div>
-        <div class="row border">
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :得意クラブ %></div>
-          <div class="col-12 col-md-8 py-1"><%= f.text_field :forte_club %></div>
+          <div class="col-12 col-md-5 py-1"><%= f.text_field :forte_club, class:"form-control form-control-sm" %></div>
         </div>
-        <div class="row border">
+        <div class="row mb-1 justify-content-center">
           <div class="col-12 col-md-4 bg-light py-1"><%= f.label :ひとこと %></div>
-          <div class="col-12 col-md-8 py-1"><%= f.text_field :message %></div>
+          <div class="col-12 col-md-5 py-1"><%= f.text_field :message, class:"form-control form-control-sm" %></div>
         </div>
         <div class="text-center">
           <%= f.submit "変更内容を保存", class:" btn btn-secondary btn-sm mt-3" %></br>

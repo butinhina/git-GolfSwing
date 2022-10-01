@@ -39,7 +39,7 @@ before_action :check_guest, only: :withdraw
 
   def check_guest
     if current_customer == Customer.guest
-      redirect_to root_path, alert: 'ゲストユーザーの削除はできません。'
+      redirect_to root_path, alert: "ゲストユーザーの削除はできません。"
     end
   end
 

@@ -26,9 +26,6 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
     if params[:tag_ids].present?  #tag_idsが存在していたら
         params[:tag_ids].shift
         @post_videos = PostVideo.includes(:post_tags).where(post_tags: {tag_id: params[:tag_ids]}).published.page(params[:page]).reverse_order
-
-    # else
-    #   @post_videos = PostVideo.published.page(params[:page]).reverse_order #投稿されたものだけを取得
     end
   end
 
@@ -39,9 +36,15 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
   def show
     @customer = @post_video.customer
     @post_comment = PostComment.new
+    if @customer != current_customer && @post_video.status == "draft"
+      redirect_to public_post_videos_path
+    end
   end
 
   def edit
+    if @post_video.customer != current_customer
+      redirect_to public_post_videos_path
+    end
   end
 
   def update
@@ -53,8 +56,12 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
   end
 
   def destroy
-    @post_video.destroy
-    redirect_to public_customer_path(current_customer.id)
+    if @post_video.customer != current_customer
+      redirect_to public_post_videos_path
+    else
+      @post_video.destroy
+      redirect_to public_customer_path(current_customer.id)
+    end
   end
 
   def search
@@ -73,7 +80,7 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
   def set_post_video
     @post_video = PostVideo.find(params[:id])
   end
-  
+
   private
 
   def post_video_params

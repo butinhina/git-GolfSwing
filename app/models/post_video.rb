@@ -39,7 +39,7 @@ class PostVideo < ApplicationRecord
 
   def video_type
     if !video.blob.content_type.in?(%('video/mp4'))
-      errors.add(:video, 'はmp4でアップロードしてください')
+      errors.add(:video, "はmp4でアップロードしてください")
     end
   end
 

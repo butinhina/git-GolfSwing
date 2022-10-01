@@ -1,4 +1,5 @@
 class Admin::InfomationsController < ApplicationController
+before_action :authenticate_admin!
 before_action :set_infomation, only: [:edit, :update, :destroy]
 
   def new

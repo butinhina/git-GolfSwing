@@ -12,10 +12,10 @@ class Customer < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   # バリデーションの設定
-  validates :last_name, presence: true
-  validates :last_name_kana, presence: true
-  validates :first_name, presence: true
-  validates :first_name_kana, presence: true
+  # validates :last_name, presence: true
+  # validates :last_name_kana, presence: true
+  # validates :first_name, presence: true
+  # validates :first_name_kana, presence: true
   validates :email, presence: true
   validates :encrypted_password, presence: true
   validates :nickname, presence: true

@@ -50,7 +50,7 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
 
   def update
     if @post_video.update(post_video_params)
-      redirect_to public_post_video_path(@post_video.id), notice: "投稿を更新しました。"
+      redirect_to public_post_video_path(@post_video.id), notice: "内容を更新しました。"
     else
       render :edit
     end

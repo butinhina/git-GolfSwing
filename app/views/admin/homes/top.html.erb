@@ -7,7 +7,7 @@
           <thead>
             <tr>
               <th>会員ID</th>
-              <th>氏名</th>
+              <th>ニックネーム</th>
               <th>メールアドレス</th>
               <th>ステータス</th>
             </tr>
@@ -16,7 +16,7 @@
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.id %></td>
-              <td><%= link_to customer.last_name, admin_path(customer.id) %><%= link_to customer.first_name, admin_path(customer.id) %></td>
+              <td><%= link_to customer.nickname, admin_path(customer.id) %></td>
               <td><%= customer.email %></td>
               <td>
                 <% if customer.is_active == true %>

@@ -1,11 +1,14 @@
 <div class="container">
   <h4 class="text-center mt-4 text-secondary">Bookmarks</h4>
+  <p class="text-center mt-3">※スマートフォンでは、再生ボタンを押すと動画が再生されます。</p>
   <div class="row">
-    <div class="col-sm d-flex flex-wrap mt-4">
+    <div class="col-sm d-flex flex-wrap">
       <% @bookmarks.each do |bookmark| %>
-        <%= link_to public_post_video_path(bookmark.post_video) do %>
-          <%= video_tag rails_blob_path(bookmark.post_video.get_video), :width => "200", :height => "120" %>
-        <% end %>
+        <div class="mx-auto h-25">
+          <%= link_to public_post_video_path(bookmark.post_video) do %>
+            <%= video_tag rails_blob_path(bookmark.post_video.get_video), :width => "200", :height => "120" %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

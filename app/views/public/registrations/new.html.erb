@@ -5,12 +5,8 @@
     <div class="d-flex flex-column justify-content-center">
     <p class="text-danger text-center">※は必須項目です</p>
       <div class="row mb-1 justify-content-center">
-        <div class="col-12 col-md-4 bg-light py-1"><span class="text-danger">※</span><%= f.label :名前 %></div>
-        <div class="col-12 col-md-4 py-1"><%= f.text_field :last_name, :placeholder => "姓", class:"form-control form-control-sm" %> <%= f.text_field :first_name, :placeholder => "名", class:"form-control form-control-sm" %></div>
-      </div>
-      <div class="row mb-1 justify-content-center">
-        <div class="col-12 col-md-4 bg-light py-1"><span class="text-danger">※</span><%= f.label :フリガナ %></div>
-        <div class="col-12 col-md-4 py-1"><%= f.text_field :last_name_kana, :placeholder => "セイ", class:"form-control form-control-sm" %> <%= f.text_field :first_name_kana, :placeholder => "メイ", class:"form-control form-control-sm" %></div>
+        <div class="col-12 col-md-4 bg-light py-1"><span class="text-danger">※</span><%= f.label :ニックネーム %></div>
+        <div class="col-12 col-md-4 py-1"><%= f.text_field :nickname, class:"form-control form-control-sm" %></div>
       </div>
       <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><span class="text-danger">※</span><%= f.label :メールアドレス %></div>
@@ -28,10 +24,6 @@
       <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :プロフィール画像 %></div>
         <div class="col-12 col-md-4 py-1"><%= f.file_field :profile_image, accept: "image/*" %></div>
-      </div>
-      <div class="row mb-1 justify-content-center">
-        <div class="col-12 col-md-4 bg-light py-1"><span class="text-danger">※</span><%= f.label :ニックネーム %></div>
-        <div class="col-12 col-md-4 py-1"><%= f.text_field :nickname, class:"form-control form-control-sm" %></div>
       </div>
       <div class="row mb-1 justify-content-center">
         <div class="col-12 col-md-4 bg-light py-1"><%= f.label :身長, class:"mt-2" %></div>

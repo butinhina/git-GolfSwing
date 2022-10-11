@@ -20,7 +20,7 @@
                 <td><%= post_comment.id %></td>
                 <td><%= post_comment.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
                 <td><%= image_tag post_comment.customer.get_profile_image(40,40), class:"rounded-circle" %></td>
-                <td><%= post_comment.customer.last_name %><%= post_comment.customer.first_name %></td>
+                <td><%= post_comment.customer.nickname %></td>
                 <td><%= post_comment.comment %></td>
                 <td><%= link_to "削除", admin_post_comment_path(post_comment.id), method: :delete %></td>
               </tr>

@@ -1,6 +1,7 @@
 <div class="container">
  <h4 class="text-center mt-4 text-secondary">Video details</h4>
  <%= notice %></br>
+ <p class="text-center">※スマートフォンでは、再生ボタンを押すと動画が再生されます。</p>
  <div class="d-flex flex-column justify-content-center">
   <div class="w-50 mx-auto">
     <%= video_tag rails_blob_path(@post_video.get_video), :controls => true, :width => "320", :height => "240", class:"card-img-top"; %>

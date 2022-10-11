@@ -1,6 +1,9 @@
 <div class="container">
   <h4 class="text-center mt-4 text-secondary">Drafts</h4>
+  <p class="text-center mt-3">※スマートフォンでは、再生ボタンを押すと動画が再生されます。</p>
   <div class="row">
-    <%= render 'index', post_videos: @post_videos %>
+    <div class="col-12 d-flex flex-wrap">
+     <%= render 'index', post_videos: @post_videos %>
+    </div>
   </div>
 </div>

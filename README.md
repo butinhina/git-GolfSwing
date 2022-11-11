@@ -38,6 +38,8 @@ https://drive.google.com/file/d/1rSA8tbhzVPMTD0uRMk4AwQZ0lglFeDJy/view?usp=shari
 - IDE：Cloud9
 
 ## 使用素材
-- アイコン
- Font Awesome：https://fontawesome.com/
- DesignEvo：https://www.designevo.com/
+### アイコン
+ - Font Awesome
+ https://fontawesome.com/
+ - DesignEvo
+ https://www.designevo.com/

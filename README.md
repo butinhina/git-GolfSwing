@@ -31,11 +31,13 @@ https://drive.google.com/file/d/1rSA8tbhzVPMTD0uRMk4AwQZ0lglFeDJy/view?usp=shari
 
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux 2(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
-なし
+- アイコン
+ Font Awesome：https://fontawesome.com/
+ DesignEvo：https://www.designevo.com/

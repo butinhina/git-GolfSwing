@@ -12,7 +12,6 @@
     </P>
     <% if customer_signed_in? %>
       <p><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"text-white" %></p>
-      <p><%= link_to "新規登録", new_customer_registration_path, class:"text-white" %></p>
     <% else %>
       <%= link_to "ゲストログイン(閲覧用)", public_guest_sign_in_path, method: :post, class:"text-white" %></br>
       <%= link_to "ログイン", new_customer_session_path, class:"text-white" %></br>

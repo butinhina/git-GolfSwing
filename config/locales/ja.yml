@@ -8,3 +8,13 @@ ja:
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
+    models:
+      customer: "会員情報"
+    attributes:
+      customer:
+        email: "メールアドレス"
+        password: "パスワード"
+        encrypted_password: "パスワード（確認用）"
+        nickname: "ニックネーム"
+      post_video:
+        video: "動画"

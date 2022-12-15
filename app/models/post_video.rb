@@ -38,13 +38,13 @@ class PostVideo < ApplicationRecord
   private
 
   def video_type
-    if !video.blob.content_type.in?(%('video/mp4'))
+    if video.attached? && !video.blob.content_type.in?(%('video/mp4'))
       errors.add(:video, "はmp4でアップロードしてください")
     end
   end
 
   def video_size
-    if video.blob.byte_size > 5.megabytes
+    if video.attached? && video.blob.byte_size > 5.megabytes
       errors.add(:video, "は1つのファイル5MB以内にしてください")
     end
   end

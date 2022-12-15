@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-before_action :check_guest, only: :withdraw
+before_action :check_guest, only: [:withdraw, :update]
  before_action :set_current_customer, except: [:show, :check_guest]
 
   def show
@@ -39,7 +39,7 @@ before_action :check_guest, only: :withdraw
 
   def check_guest
     if current_customer == Customer.guest
-      redirect_to root_path, alert: "ゲストユーザーの削除はできません。"
+      redirect_to root_path, alert: "ゲストユーザーの更新・削除はできません。"
     end
   end
 
@@ -52,6 +52,6 @@ before_action :check_guest, only: :withdraw
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :nickname, :height, :birth_dat, :holding_ball, :history, :forte_club, :message, :profile_image)
+    params.require(:customer).permit(:email, :nickname, :height, :birth_dat, :holding_ball, :history, :forte_club, :message, :profile_image)
   end
 end

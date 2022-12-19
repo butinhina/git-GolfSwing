@@ -6,6 +6,15 @@
       <%= render 'index', post_videos: @post_videos %>
     </div>
     <div class="col-8 col-md-3 mx-auto">
+      <% if @tag.present? %>
+        <div id="error_explanation">
+            <ul class="list-unstyled">
+              <% @tag.errors.full_messages.each do |message| %>
+                <li class="text-secondary"><%= message %></li>
+              <% end %>
+            </ul>
+        </div>
+      <% end %>
      <div class="mt-4 mb-3 text-center">
       <%= form_with url: public_post_videos_path, method: :get do |f| %>
          <%= text_field_tag "tag", "", size: 10, placeholder: "タグの追加" %>

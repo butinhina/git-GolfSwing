@@ -18,3 +18,7 @@ ja:
         nickname: "ニックネーム"
       post_video:
         video: "動画"
+      post_comment:
+        comment: "コメント"
+      tag:
+        name: "タグ名"

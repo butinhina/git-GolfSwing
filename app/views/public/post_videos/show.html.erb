@@ -53,7 +53,18 @@
       </div>
   </div>
  </div>
+
   <div class="w-50 bg-light mx-auto">
+    <% if @error_comment.present? %>
+      <div id="error_explanation">
+        <p class="text-secondary"><%= @error_comment.errors.count %>件のエラーが発生しました</p>
+        <ul>
+          <% @error_comment.errors.full_messages.each do |message| %>
+            <li class="text-secondary"><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="body">
       <p>コメント件数:<%= @post_video.post_comments.count %></p>
       <% @post_video.post_comments.each do |post_comment| %>

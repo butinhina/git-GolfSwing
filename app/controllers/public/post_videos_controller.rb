@@ -19,9 +19,10 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
   def index
     @post_videos = PostVideo.published.page(params[:page]).reverse_order
     #パラメータがあればindexアクション内でtagsテーブルに保存
-    # byebug
     if params[:tag]
-      Tag.create(name: params[:tag])
+      @tag = Tag.create(name: params[:tag])
+    elsif @tag.present?
+      redirect_to request.referer
     end
     #タグのOR検索
     if params[:tag_ids].present?  #tag_idsが存在していたら

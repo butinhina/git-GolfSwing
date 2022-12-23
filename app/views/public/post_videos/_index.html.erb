@@ -1,9 +1,9 @@
 <% post_videos.each do |post_video| %>
  <div class="mx-auto h-25">
   <div class="card border-0">
+    <%= link_to public_post_video_path(post_video.id) do %>
     <%= video_tag rails_blob_path(post_video.get_video), width: "180", height: "100", controls: true %>
     <div class="card-body text-center pt-0">
-    <%= link_to public_post_video_path(post_video.id) do %>
       <%= post_video.created_at.strftime("%Y-%m-%d") %>
     <% end %>
     </div>

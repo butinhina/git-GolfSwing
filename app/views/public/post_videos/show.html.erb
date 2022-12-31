@@ -25,16 +25,9 @@
               <% end %>
             </p>
             <i class="fas fa-user"></i>By <%= link_to "#{@post_video.customer.nickname}", public_customer_path(@customer.id), class:"text-dark" %> |
-
-              <% if @post_video.favorited_by?(current_customer) %>
-                <%= link_to public_post_video_favorites_path(@post_video), method: :delete, remote: true, class:"text-danger" do %>
-                  <i class="fas fa-heart"></i>️<%= @post_video.favorites.count %>いいね
-                <% end %>
-              <% else %>
-                <%= link_to public_post_video_favorites_path(@post_video), method: :post, remote: true do %>
-                  <i class="far fa-heart"></i><%= @post_video.favorites.count %>いいね
-                <% end %>
-              <% end %>
+            <div id="favorite_button_<%= @post_video.id %>">
+              <%= render 'favorite', post_video: @post_video %>
+            </div>
           </div>
         </div>
         <p class="text-secondary mt-3"><%= @post_video.created_at.strftime("%m月%d日") %></p>

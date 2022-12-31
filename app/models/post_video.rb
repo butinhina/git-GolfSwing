@@ -30,7 +30,7 @@ class PostVideo < ApplicationRecord
   end
   # 既にいいねしているかを検証
   def favorited_by?(customer)
-    favorites.exists?(customer_id: customer)
+    favorites.where(customer_id: customer).exists?
   end
   #投稿と下書き
   enum status: { published: 0, draft: 1 }

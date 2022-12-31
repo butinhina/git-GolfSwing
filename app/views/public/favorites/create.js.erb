@@ -1,0 +1,3 @@
+$(function(){
+  $('#favorite_button_<%= @post_video.id %>').html("<%= j(render( 'public/post_videos/favorite', post_video: @post_video )) %>");
+});

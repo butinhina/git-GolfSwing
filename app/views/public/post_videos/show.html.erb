@@ -6,15 +6,9 @@
   <div class="w-50 mx-auto">
     <%= video_tag rails_blob_path(@post_video.get_video), :controls => true, :width => "320", :height => "240", class:"card-img-top"; %>
       <div class="text-right mt-2 mr-3">
-        <% if @post_video.bookmarked_by?(current_customer) %>
-          <%= link_to public_post_video_bookmarks_path(@post_video), method: :delete, class:"text-warning" do %>
-            <i class="fas fa-bookmark"></i>
-          <% end %>
-        <% else %>
-          <%= link_to public_post_video_bookmarks_path(@post_video), method: :post, class:"text-warning" do %>
-            <i class="far fa-bookmark"></i>
-          <% end %>
-        <% end %>
+        <div id="bookmark_button_<%= @post_video.id %>">
+          <%= render 'bookmark', post_video: @post_video %>
+        </div>
       </div>
       <div class="body">
         <div class="row">
@@ -33,11 +27,11 @@
             <i class="fas fa-user"></i>By <%= link_to "#{@post_video.customer.nickname}", public_customer_path(@customer.id), class:"text-dark" %> |
 
               <% if @post_video.favorited_by?(current_customer) %>
-                <%= link_to public_post_video_favorites_path(@post_video), method: :delete, class:"text-danger" do %>
+                <%= link_to public_post_video_favorites_path(@post_video), method: :delete, remote: true, class:"text-danger" do %>
                   <i class="fas fa-heart"></i>️<%= @post_video.favorites.count %>いいね
                 <% end %>
               <% else %>
-                <%= link_to public_post_video_favorites_path(@post_video), method: :post do %>
+                <%= link_to public_post_video_favorites_path(@post_video), method: :post, remote: true do %>
                   <i class="far fa-heart"></i><%= @post_video.favorites.count %>いいね
                 <% end %>
               <% end %>

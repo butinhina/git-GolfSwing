@@ -1,0 +1,9 @@
+<% if post_video.bookmarked_by?(current_customer) %>
+  <%= link_to public_post_video_bookmarks_path(post_video), method: :delete, remote: true, class:"text-warning" do %>
+    <i class="fas fa-bookmark"></i>
+  <% end %>
+<% else %>
+  <%= link_to public_post_video_bookmarks_path(post_video), method: :post, remote: true, class:"text-warning" do %>
+    <i class="far fa-bookmark"></i>
+  <% end %>
+<% end %>

@@ -1,0 +1,3 @@
+$(function(){
+  $('#bookmark_button_<%= @post_video.id %>').html("<%= j(render( 'public/post_videos/bookmark', post_video: @post_video )) %>");
+});

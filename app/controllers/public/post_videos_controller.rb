@@ -22,7 +22,7 @@ before_action :set_post_video, only: [:show, :edit, :update, :destroy]
     if params[:tag]
       @tag = Tag.create(name: params[:tag])
     elsif @tag.present?
-      redirect_to request.referer
+      @tag.save
     end
     #タグのOR検索
     if params[:tag_ids].present?  #tag_idsが存在していたら

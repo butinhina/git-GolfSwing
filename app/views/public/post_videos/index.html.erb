@@ -15,12 +15,14 @@
             </ul>
         </div>
       <% end %>
-     <div class="mt-4 mb-3 text-center">
-      <%= form_with url: public_post_videos_path, method: :get do |f| %>
-         <%= text_field_tag "tag", "", size: 10, placeholder: "タグの追加" %>
-         <%= submit_tag '＋' %>
-      <% end %>
-     </div>
+
+      <div class="mt-4 mb-3 text-center">
+          <%= form_with url: public_post_videos_path, method: :get, remote: true do |f| %>
+            <%= text_field_tag "tag", "", size: 10, placeholder: "タグの追加" %>
+            <%= submit_tag "＋", class: "btn" %>
+          <% end %>
+      </div>
+
      <div class="bg-light">
        <%= render 'list' %>
      </div>

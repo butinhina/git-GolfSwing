@@ -42,40 +42,14 @@
  </div>
 
   <div class="w-50 bg-light mx-auto">
-    <% if @error_comment.present? %>
-      <div id="error_explanation">
-        <p class="text-secondary"><%= @error_comment.errors.count %>件のエラーが発生しました</p>
-        <ul>
-          <% @error_comment.errors.full_messages.each do |message| %>
-            <li class="text-secondary"><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <div class="body">
-      <p>コメント件数:<%= @post_video.post_comments.count %></p>
-      <% @post_video.post_comments.each do |post_comment| %>
-      <table>
-        <%= link_to public_customer_path(post_comment.customer.id) do %>
-         <%= image_tag post_comment.customer.get_profile_image(30,30), class:"rounded-circle"; %>
-        <% end %>
-        <%= post_comment.customer.nickname %>
-        <%= post_comment.comment %>
-        <span class="text-secondary"><%= post_comment.created_at.strftime("%Y-%m-%d") %></span>
-        <% if post_comment.customer == current_customer %>
-          <%= link_to "削除", public_post_video_post_comment_path(@post_video, post_comment), method: :delete %>
-        <% end %>
-      </table>
-      <% end %>
+    <!--コメント一覧部分-->
+    <div id="comments_area">
+      <%= render 'public/post_comments/post_comment', post_video: @post_video %>
+    </div>
+    <!--コメントフォーム-->
+    <div class="new_comment">
+      <%= render 'public/post_comments/form', post_video: @post_video, post_comment: @post_comment %>
     </div>
 
-    <%= form_with model: [@post_video, @post_comment], url: public_post_video_post_comments_path(@post_video) do |f| %>
-      <div class="text-center">
-        <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに", class:"form-control form-control-sm" %>
-      </div>
-      <div class="text-center mt-2 pb-2">
-        <%= f.submit "投稿" %>
-      </div>
-    <% end %>
   </div>
 </div>

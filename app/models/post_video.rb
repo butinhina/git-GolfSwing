@@ -12,7 +12,7 @@ class PostVideo < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   # バリデーションの設定
   validates :video, presence: true
-  validate :video_type, :video_size
+  validate  :video_size
 
   def get_video
     if video.attached?
@@ -37,11 +37,11 @@ class PostVideo < ApplicationRecord
 
   private
 
-  def video_type
-    if video.attached? && !video.blob.content_type.in?(%('video/mp4'))
-      errors.add(:video, "はmp4でアップロードしてください")
-    end
-  end
+  # def video_type
+  #   if video.attached? && !video.blob.content_type.in?(%('video/mp4'))
+  #     errors.add(:video, "はmp4でアップロードしてください")
+  #   end
+  # end
 
   def video_size
     if video.attached? && video.blob.byte_size > 5.megabytes
